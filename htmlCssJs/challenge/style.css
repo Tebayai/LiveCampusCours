@@ -262,4 +262,30 @@ footer{
             font-size: 64px;
         }
     }
+
+    .container .interactive{
+        position: relative;
+        text-align: left;
+
+        img{
+            width: 65%;
+        }
+
+        .interactive-text{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            padding: 6rem 0 0 6rem;
+            background: white;
+
+            h2{
+                font-size: 3rem;
+            }
+
+            p{
+                margin-bottom: 0;
+            }
+        }
+    }
 }   
