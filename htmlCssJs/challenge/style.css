@@ -85,6 +85,125 @@ body {
 
     }
 }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+
+    .interactive{
+        text-align: center;
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+
+        h2{
+            text-transform: uppercase;
+            font-weight: normal;
+            margin: 1rem 0;
+        }
+
+        p{
+            margin-bottom: 3rem;
+            font-size: 14px;
+            color: #696969;
+            line-height: 1.4;
+        }
+    }
+}
+
+.creation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2{
+        text-transform: uppercase;
+        font-weight: normal;
+        margin: 1rem 0;
+    }
+
+    .gallery{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .gallery-item{
+            position: relative;
+
+            &::before{
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent 60%);
+            }
+
+            img{
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            span{
+                position: absolute;
+                width: 30%;
+                bottom: 1rem;
+                left: 1rem;
+                color: #cacaca;
+                text-transform: uppercase;
+                font-weight: normal;
+            }
+        }
+    }
+    .gallery-btn{
+        margin-top: 1rem;
+        border: 1px solid black;
+        padding: .5rem 3rem;
+
+        a{
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: medium;
+        }
+    }
+}
+
+footer{
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+
+    .footer-links{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+
+    a{
+        color: white;
+        text-decoration: none;
+    }
+
+    .footer-socials{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: .5rem;
+    }
+
+    p{
+        color: gray
+    }
+}
+
+
+
 @media (min-width: 768px) {
     .hero header {
         .menu-icon {
