@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Outfit", sans-serif;
+
+    @media(min-width: 1024px){
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+nav{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    @media(min-width: 1024px){
+        margin: 2rem 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .menu-left{
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+
+        .logo{
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .menu-desktop{
+            display: none;
+            list-style: none;
+
+            @media(min-width: 1024px){
+                margin-left: 2rem;
+                display: flex;
+                gap: 1rem;
+                color: gray;
+            }
+        }
+
+        .burger-menu{
+            @media(min-width: 1024px){
+                display: none;
+            }
+        }
+    }
+    .menu-right{
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+
+        .profile img{
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+}
+
+.product{
+    
+    @media(min-width: 1024px){
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    .product-image{
+        margin-bottom: 1rem;
+        img{
+            display: block;
+            width: 100%;
+            height: auto;
+
+            @media(min-width: 1024px){
+                border-radius: 1rem;
+            }
+        }
+
+        .thumbnails{
+            display: none;
+
+            @media(min-width: 1024px){
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            img{
+                border-radius: .5rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .product-details{
+        padding: 0 1rem;
+
+        h2{
+            color: #636363;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1{
+            color: #1d1d1d;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: .8rem 0;
+        }
+
+        p{
+            color: #636363;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions{
+            @media(min-width: 1024px){
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+
+        .price{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #1d1d1d;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+
+            div{
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+
+                .current-price{
+                    font-weight: bold;
+                    font-size: 1.6rem;
+                }
+
+                .discount{
+                    background-color: #1d1d1d;
+                    border-radius: 4px;
+                    color: #fff;
+                    padding: 6px 8px;
+                }
+            }
+
+            .original-price{
+                text-decoration: line-through;
+                color: #636363;
+            }
+        }
+
+        .product-quantity{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            background-color: #f0f0f0;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
+
+            @media(min-width: 1024px){
+                height: 56px !important;
+            }
+
+            button{
+                border: none;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                font-size: 2rem;
+                color: rgb(206, 117, 0);
+            }
+
+            input{
+                width: 80%;
+                text-align: center;
+                font-size: 1rem;
+                padding: 0.5rem;
+                border: 0px;
+                border-radius: 4px;
+                background-color: #f0f0f0;
+            }
+        }
+
+        .add-to-cart{
+            background-color: rgb(206, 117, 0);
+            color: #1d1d1d;
+            text-align: center;
+            font-weight: bold;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+
+            @media(min-width: 1024px){
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+    }
+}
