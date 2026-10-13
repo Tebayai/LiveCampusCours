@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    color: #333;
+}
+
+.separator {
+    height: 2px;
+    margin: 1.5rem 0;
+    background: linear-gradient(90deg, #e0bdbd, #cc1f00, #e0bdbd);
+    background-size: 200% 100%;
+    animation: glisse 2ms linear infinite;
+}
+
+@keyframes glisse {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}
