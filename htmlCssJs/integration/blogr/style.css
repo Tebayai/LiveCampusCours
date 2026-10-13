@@ -1,11 +1,334 @@
-/* Base CSS neutre pour ton intégration */
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  font-family: sans-serif;
-  line-height: 1.6;
-  background-color: #ffffff;
-  color: #333;
+  font-family: 'Overpass', sans-serif;
+  background-color: #fafafa;
+  color: #4c5a67;
+  overflow-x: hidden;
 }
 
-/* À compléter ici selon la maquette */
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border-radius: 30px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border: 1px solid #ffffff;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-white {
+  background-color: #ffffff;
+  color: #ff505c;
+}
+
+.btn-white:hover {
+  background-color: #ff7b86;
+  border-color: #ff7b86;
+  color: #ffffff;
+}
+
+.btn-outline {
+  color: #ffffff;
+}
+
+.btn-outline:hover {
+  background-color: #ffffff;
+  color: #ff505c;
+}
+
+.hero {
+  height: 600px;
+  padding: 0 165px;
+  border-bottom-left-radius: 100px;
+  background:
+    url(images/bg-pattern-intro-desktop.svg) no-repeat -440px -1290px,
+    linear-gradient(120deg, #ff8f70, #ff3d54);
+  color: #ffffff;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.logo img {
+  display: block;
+}
+
+.menu {
+  display: flex;
+  gap: 40px;
+  margin-left: 65px;
+}
+
+.dropdown {
+  position: relative;
+  padding: 20px 0;
+}
+
+.dropdown > a {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.dropdown > a::after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 7px;
+  margin-left: 8px;
+  vertical-align: middle;
+  background: url(images/icon-arrow-light.svg) no-repeat;
+  transition: transform 0.2s;
+}
+
+.dropdown:hover > a,
+.dropdown:focus-within > a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.dropdown:hover > a::after,
+.dropdown:focus-within > a::after {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -25px;
+  min-width: 170px;
+  padding: 25px 40px 25px 25px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.dropdown:hover .submenu,
+.dropdown:focus-within .submenu {
+  display: block;
+}
+
+.submenu li + li {
+  margin-top: 10px;
+}
+
+.submenu a {
+  font-family: 'Ubuntu', sans-serif;
+  color: #1f3e5a;
+}
+
+.submenu a:hover {
+  font-weight: 700;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-left: auto;
+}
+
+.login {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.login:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.hero-content {
+  margin-top: 110px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 60px;
+  letter-spacing: -1.5px;
+}
+
+.hero-content p {
+  margin: 15px 0 55px;
+  font-size: 20px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hero-buttons .btn {
+  padding: 14px 15px;
+  width: 135px;
+  font-size: 15px;
+}
+
+.text h3 {
+  font-size: 28px;
+  letter-spacing: -0.5px;
+  color: #1f3e5a;
+}
+
+.text p {
+  margin: 30px 0 70px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.4px;
+}
+
+.text p:last-child {
+  margin-bottom: 0;
+}
+
+.future {
+  padding: 140px 165px 0;
+}
+
+.future h2 {
+  text-align: center;
+  font-size: 40px;
+  letter-spacing: -1.2px;
+  color: #1f3e5a;
+}
+
+.future-content {
+  position: relative;
+  margin-top: 110px;
+}
+
+.future .text {
+  width: 540px;
+}
+
+.editor-img {
+  position: absolute;
+  top: -290px;
+  left: calc(50% + 40px);
+}
+
+.infrastructure {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 400px;
+  margin-top: 275px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  background:
+    url(images/bg-pattern-circles.svg) no-repeat -217px -438px,
+    linear-gradient(120deg, #2c2c3e, #3f4164);
+}
+
+.phones-img {
+  position: absolute;
+  top: -68px;
+  left: 124px;
+}
+
+.infrastructure .text {
+  width: 530px;
+  margin-left: calc(50% + 16px);
+}
+
+.infrastructure h2 {
+  font-size: 40px;
+  letter-spacing: -1.2px;
+  color: #ffffff;
+}
+
+.infrastructure p {
+  margin: 30px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.simple {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 786px;
+  margin-top: 110px;
+}
+
+.laptop-img {
+  position: absolute;
+  top: 0;
+  left: -278px;
+}
+
+.simple .text {
+  width: 540px;
+  margin-left: calc(50% + 16px);
+}
+
+.footer {
+  display: flex;
+  margin-top: 130px;
+  padding: 72px 0 75px 165px;
+  border-top-right-radius: 100px;
+  background-color: #232127;
+}
+
+.footer .logo {
+  width: 101px;
+  height: 40px;
+  margin-right: 184px;
+}
+
+.footer-col {
+  width: 285px;
+}
+
+.footer h4 {
+  margin: 8px 0 35px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.footer li + li {
+  margin-top: 12px;
+}
+
+.footer a {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+  color: #c8c8cb;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
