@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+
+    @media (min-width: 768px) {
+        padding: 2rem;
+    }
+}
+
+.recipe {
+    margin: 1rem;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+span,li{
+    font-size: 14px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+
+    @media (min-width: 768px) {
+        border-radius: 1rem;
+    }
+}
+
+.recipe-time{
+    padding: 1rem;
+    background-color: #e9d9d9;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h2{
+        color: #3f1024;
+        margin-bottom: 1rem;
+    }
+
+    ul{
+        margin-left: 2rem;
+
+        li{
+            margin-bottom: 0.5rem;
+        }
+    }
+}
