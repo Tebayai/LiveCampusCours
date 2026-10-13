@@ -5,52 +5,123 @@
 }
 
 body{
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    color: #333;
+    font-family: "Outfit", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #f3e5d7;
+    color: #5f564d;
 
     @media (min-width: 768px) {
-        padding: 2rem;
+        padding: 0 1rem;
     }
 }
 
 .recipe {
-    margin: 1rem;
+    max-width: 736px;
+    margin: 0 auto;
+    background-color: #fff;
+
+    @media (min-width: 768px) {
+        margin: 2rem auto;
+        padding: 1rem 2rem;
+        border-radius: 1.5rem;
+    }
+}
+
+.recipe-content {
+    padding: 2.5rem 2rem;
+
+    @media (min-width: 768px) {
+        padding: 2.5rem 0 0;
+    }
+}
+
+h1, h2{
+    font-family: "Young Serif", serif;
+    font-weight: 400;
+    line-height: 1;
 }
 
 h1{
-    font-size: 2rem;
+    font-size: 1.8rem;
+    color: #312e2c;
+    margin-bottom: 1rem;
 }
 
-span,li{
-    font-size: 14px;
+h2{
+    font-size: 1.5rem;
+    color: #854632;
+    margin-bottom: 1.5rem;
 }
 
 img {
-    max-width: 100%;
+    display: block;
+    width: 100%;
     height: auto;
 
     @media (min-width: 768px) {
-        border-radius: 1rem;
+        border-radius: 0.75rem;
+    }
+}
+
+ul, ol{
+    padding-left: 1.5rem;
+
+    li{
+        padding-left: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    li::marker{
+        color: #854632;
     }
 }
 
 .recipe-time{
-    padding: 1rem;
-    background-color: #e9d9d9;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+    padding: 1.5rem 1.75rem;
+    background-color: #fff7fb;
+    border-radius: 0.75rem;
 
     h2{
-        color: #3f1024;
+        font-size: 1.4rem;
+        color: #7a284e;
         margin-bottom: 1rem;
     }
 
-    ul{
-        margin-left: 2rem;
+    li::marker{
+        color: #7a284e;
+    }
+}
 
-        li{
-            margin-bottom: 0.5rem;
-        }
+.recipe-ingredients,
+.recipe-instructions{
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e3ddd7;
+}
+
+.recipe-nutrition{
+    p{
+        margin-bottom: 1.5rem;
+    }
+
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    td{
+        width: 50%;
+        padding: 0.75rem 2rem;
+    }
+
+    tr + tr{
+        border-top: 1px solid #e3ddd7;
+    }
+
+    td:last-child{
+        font-weight: 700;
+        color: #854632;
     }
 }
