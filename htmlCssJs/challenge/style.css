@@ -257,6 +257,10 @@ footer{
 }
 
 @media (min-width: 1024px) {
+    .hero{
+        background-image: url('images/desktop/image-hero.jpg');
+    }
+
     .hero-content{
         width: 50%;
 
@@ -316,6 +320,12 @@ footer{
                 text-transform: uppercase;
                 font-size: 14px;
                 font-weight: medium;
+        }
+    }
+
+    .gallery-item{
+        span{
+            font-size: 1.6rem;
         }
     }
 }   
