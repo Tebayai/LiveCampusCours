@@ -1,0 +1,10 @@
+/* Départ CSS générique pour Easybank */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f3f4f6;
+  color: #2d2d2d;
+}
+
+/* À compléter avec les sections et composants */
