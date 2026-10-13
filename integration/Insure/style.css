@@ -1,0 +1,250 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Karla", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #6b6670;
+    background-color: #fff;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3{
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    color: #1c0f29;
+    line-height: 1;
+}
+
+.container{
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.btn{
+    display: inline-block;
+    padding: .6rem 1.4rem;
+    border: 2px solid;
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: background-color .2s, color .2s;
+}
+
+.btn-dark{
+    border-color: #1c0f29;
+    color: #1c0f29;
+
+    &:hover{
+        background-color: #1c0f29;
+        color: #fff;
+    }
+}
+
+.btn-light{
+    border-color: #fff;
+    color: #fff;
+
+    &:hover{
+        background-color: #fff;
+        color: #1c0f29;
+    }
+}
+
+header{
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+
+    .container{
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav{
+        display: flex;
+        align-items: center;
+        gap: 1.75rem;
+
+        a:not(.btn){
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #6b6670;
+
+            &:hover{
+                color: #1c0f29;
+            }
+        }
+
+        .btn{
+            margin-left: 1.5rem;
+        }
+    }
+}
+
+.hero{
+    position: relative;
+    height: 600px;
+    padding-top: 105px;
+    background-color: #1c0f29;
+
+    .pattern-right{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    .pattern-left{
+        position: absolute;
+        top: 430px;
+        left: -50px;
+    }
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .hero-text{
+        max-width: 445px;
+        color: #fff;
+
+        &::before{
+            content: "";
+            display: block;
+            width: 150px;
+            height: 1px;
+            background-color: #fff;
+            opacity: .5;
+            margin-bottom: 4rem;
+        }
+
+        h1{
+            color: #fff;
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+        }
+
+        p{
+            margin-bottom: 2.5rem;
+        }
+    }
+}
+
+.different{
+    padding-top: 300px;
+
+    &::before{
+        content: "";
+        display: block;
+        width: 150px;
+        height: 1px;
+        background-color: #c084a5;
+        margin-bottom: 4rem;
+    }
+
+    h2{
+        font-size: 4.5rem;
+        margin-bottom: 5rem;
+    }
+
+    .features{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    h3{
+        font-size: 2rem;
+        margin: 2.5rem 0 1.5rem;
+    }
+}
+
+.how-we-work{
+    position: relative;
+    margin: 10rem 0;
+    height: 250px;
+    padding: 0 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1c0f29 url("images/bg-pattern-how-we-work-desktop.svg") no-repeat right top;
+
+    h2{
+        max-width: 480px;
+        font-size: 3.5rem;
+        color: #fff;
+    }
+}
+
+footer{
+    padding: 5rem 0;
+    background: #f8f8f8 url("images/bg-pattern-footer-desktop.svg") no-repeat left top;
+
+    .footer-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid #dfdfdf;
+    }
+
+    .socials{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        a:hover img{
+            filter: brightness(0);
+        }
+    }
+
+    .footer-links{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-top: 2.5rem;
+
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: .5rem;
+        }
+
+        h4{
+            font-size: .9rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #6b6670;
+            margin-bottom: 1.5rem;
+        }
+
+        a{
+            font-size: .9rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #1c0f29;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
