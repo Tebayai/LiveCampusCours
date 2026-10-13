@@ -1,0 +1,11 @@
+/* Base CSS neutre pour ton intégration */
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* À compléter ici selon la maquette */
