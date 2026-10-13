@@ -131,9 +131,11 @@ body {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+        width: 100%;
 
         .gallery-item{
             position: relative;
+            flex: 1 1 240px;
 
             &::before{
                 content: "";
