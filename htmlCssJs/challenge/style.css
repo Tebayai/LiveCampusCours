@@ -266,6 +266,7 @@ footer{
     .container .interactive{
         position: relative;
         text-align: left;
+        margin-bottom: 4rem;
 
         img{
             width: 65%;
@@ -286,6 +287,33 @@ footer{
             p{
                 margin-bottom: 0;
             }
+        }
+    }
+
+    .gallery-btn{
+        display: none;
+    }
+
+    .creation-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        h2{
+            font-size: 3rem;
+        }
+        
+        .see-all{
+            display: inline-block;
+            margin-top: 1rem;
+            border: 1px solid black;
+            padding: .5rem 3rem;
+                text-decoration: none;
+                color: black;
+                text-transform: uppercase;
+                font-size: 14px;
+                font-weight: medium;
         }
     }
 }   
