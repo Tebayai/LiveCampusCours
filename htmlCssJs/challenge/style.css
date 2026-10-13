@@ -27,6 +27,8 @@ body {
         .logo {
             position: relative;
             z-index: 2;
+            font-size: clamp(1rem, 3vw, 2rem);
+            font-weight: bold;
         }
 
         #menu-toggle {
@@ -83,6 +85,7 @@ body {
             border: 2px solid white;
             text-transform: uppercase;
             font-weight: normal;
+            font-size: clamp(2rem, 6.25vw, 4rem);
         }
 
     }
@@ -105,6 +108,7 @@ body {
             text-transform: uppercase;
             font-weight: normal;
             margin: 1rem 0;
+            font-size: clamp(1.5rem, 4.7vw, 3rem);
         }
 
         p{
@@ -125,6 +129,18 @@ body {
         text-transform: uppercase;
         font-weight: normal;
         margin: 1rem 0;
+        font-size: clamp(1.5rem, 4.7vw, 3rem);
+    }
+
+    .see-all{
+        display: none;
+        margin-top: 1rem;
+        border: 1px solid black;
+        padding: .5rem 3rem;
+        text-decoration: none;
+        color: black;
+        text-transform: uppercase;
+        font-size: 14px;
     }
 
     .gallery{
@@ -158,6 +174,7 @@ body {
                 color: #cacaca;
                 text-transform: uppercase;
                 font-weight: normal;
+                font-size: clamp(1rem, 2.5vw, 1.6rem);
             }
         }
     }
@@ -208,27 +225,75 @@ footer{
 
 
 
-@media (min-width: 768px) {
-    .hero header {
+@media (min-width: 1024px) {
+    .hero{
+        background-image: url('images/desktop/image-hero.jpg');
 
-        .logo{
-            font-size: 2rem;
-            font-weight: bold;
+        .hero-container{
+            margin: 0 auto;
+            max-width: 1200px;
         }
-        .menu-icon {
+
+        header{
+            .menu-icon {
+                display: none;
+            }
+
+            .menu-links {
+                position: static;
+                flex-direction: row;
+                gap: 2rem;
+                padding: 0;
+                background: none;
+                text-transform: none;
+                font-size: 1.4rem;
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        .hero-content{
+            width: 50%;
+        }
+    }
+
+    .container .interactive{
+        position: relative;
+        text-align: left;
+        margin-bottom: 4rem;
+
+        img{
+            width: 65%;
+        }
+
+        .interactive-text{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            padding: 6rem 0 0 6rem;
+            background: white;
+
+            p{
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .creation{
+        .creation-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .see-all{
+            display: inline-block;
+        }
+
+        .gallery-btn{
             display: none;
-        }
-
-        .menu-links {
-            position: static;
-            flex-direction: row;
-            gap: 2rem;
-            padding: 0;
-            background: none;
-            text-transform: none;
-            font-size: 1.4rem;
-            opacity: 1;
-            visibility: visible;
         }
     }
 
@@ -255,77 +320,3 @@ footer{
         }
     }
 }
-
-@media (min-width: 1024px) {
-    .hero{
-        background-image: url('images/desktop/image-hero.jpg');
-    }
-
-    .hero-content{
-        width: 50%;
-
-        h1{
-            font-size: 64px;
-        }
-    }
-
-    .container .interactive{
-        position: relative;
-        text-align: left;
-        margin-bottom: 4rem;
-
-        img{
-            width: 65%;
-        }
-
-        .interactive-text{
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 50%;
-            padding: 6rem 0 0 6rem;
-            background: white;
-
-            h2{
-                font-size: 3rem;
-            }
-
-            p{
-                margin-bottom: 0;
-            }
-        }
-    }
-
-    .gallery-btn{
-        display: none;
-    }
-
-    .creation-header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-
-        h2{
-            font-size: 3rem;
-        }
-        
-        .see-all{
-            display: inline-block;
-            margin-top: 1rem;
-            border: 1px solid black;
-            padding: .5rem 3rem;
-                text-decoration: none;
-                color: black;
-                text-transform: uppercase;
-                font-size: 14px;
-                font-weight: medium;
-        }
-    }
-
-    .gallery-item{
-        span{
-            font-size: 1.6rem;
-        }
-    }
-}   
