@@ -63,6 +63,10 @@ body {
             transition: opacity 0.3s, visibility 0.3s;
         }
 
+        .menu-links li {
+            cursor: pointer;
+        }
+
         #menu-toggle:checked ~ .menu-icon {
             background-image: url('images/icon-close.svg');
         }
@@ -141,6 +145,12 @@ body {
         color: black;
         text-transform: uppercase;
         font-size: 14px;
+        transition: background 0.3s, color 0.3s;
+
+        &:hover{
+            background: black;
+            color: white;
+        }
     }
 
     .gallery{
@@ -160,6 +170,15 @@ body {
                 background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent 60%);
             }
 
+            &::after{
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: rgba(255, 255, 255, 0.75);
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
             img{
                 width: 100%;
                 height: auto;
@@ -168,6 +187,7 @@ body {
 
             span{
                 position: absolute;
+                z-index: 1;
                 width: 30%;
                 bottom: 1rem;
                 left: 1rem;
@@ -175,6 +195,19 @@ body {
                 text-transform: uppercase;
                 font-weight: normal;
                 font-size: clamp(1rem, 2.5vw, 1.6rem);
+                transition: color 0.3s;
+            }
+
+            &:hover{
+                cursor: pointer;
+
+                &::after{
+                    opacity: 1;
+                }
+
+                span{
+                    color: black;
+                }
             }
         }
     }
@@ -182,6 +215,7 @@ body {
         margin-top: 1rem;
         border: 1px solid black;
         padding: .5rem 3rem;
+        transition: background 0.3s;
 
         a{
             text-decoration: none;
@@ -189,6 +223,15 @@ body {
             text-transform: uppercase;
             font-size: 14px;
             font-weight: medium;
+            transition: color 0.3s;
+        }
+
+        &:hover{
+            background: black;
+
+            a{
+                color: white;
+            }
         }
     }
 }
@@ -220,6 +263,27 @@ footer{
 
     p{
         color: gray
+    }
+}
+
+.menu-links li,
+footer a{
+    position: relative;
+
+    &::after{
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -0.5rem;
+        width: 24px;
+        height: 2px;
+        background: white;
+        transform: translateX(-50%) scaleX(0);
+        transition: transform 0.3s;
+    }
+
+    &:hover::after{
+        transform: translateX(-50%) scaleX(1);
     }
 }
 
