@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    color: #333;
+}
+
+.hero{
+    background-image: url('images/mobile/image-hero.jpg');
+    background-size: cover;
+    background-position: top;
+    height: 60vh;
+    padding: 2rem;
+    color: #fff;
+
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            position: relative;
+            z-index: 2;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-icon {
+            position: relative;
+            z-index: 2;
+            display: block;
+            width: 24px;
+            height: 20px;
+            background: url('images/icon-hamburger.svg') no-repeat center;
+            cursor: pointer;
+        }
+
+        .menu-links {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: #000;
+            list-style: none;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        #menu-toggle:checked ~ .menu-icon {
+            background-image: url('images/icon-close.svg');
+        }
+
+        #menu-toggle:checked ~ .menu-links {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    .hero-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(60vh - 4rem);
+
+
+        h1{
+            padding: 1rem;
+            border: 2px solid white;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+
+    }
+}
+@media (min-width: 768px) {
+    .hero header {
+        .menu-icon {
+            display: none;
+        }
+
+        .menu-links {
+            position: static;
+            flex-direction: row;
+            gap: 2rem;
+            padding: 0;
+            background: none;
+            text-transform: none;
+            font-size: 1rem;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
