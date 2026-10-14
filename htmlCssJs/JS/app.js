@@ -136,3 +136,150 @@ if (age < 12 && taille < 140) {
 }else{
     console.log('Accès autorisé');
 }
+
+
+// Code saisi par l'utilisateur :
+// codeSaisi = "Super2025"
+
+// Stockez ce code dans une variable
+const codeSaisi = "Super2025";
+
+// Comparez-le à la valeur attendue ("SUPER2025") de façon stricte
+if(codeSaisi === "SUPER2025"){
+    console.log('Code valide');
+} else {
+    console.log('Code invalide');
+}
+
+// Affichez un message selon la validité du code
+
+// Montant du panier :
+// montantCommande = 28.50
+
+// Stockez ce montant dans une variable
+const cartCmd = 50;
+
+// Évaluez les frais selon les tranches définies
+if(cartCmd >= 28.50){
+    console.log('Livraison gratuite')
+} else if(cartCmd >= 30){
+    console.log("Livraison à 5 €")
+} else{
+    console.log('Livraison à 9 €')
+}
+
+// Affichez le montant des frais dans la console
+
+// Données du client :
+// estAbonne = true
+// montantCommande = 120
+
+// Déclarez les variables
+const estAbonne = true;
+const montantCommande = 120;
+
+// Vérifiez si le client a droit à la réduction
+let reduction = 0;
+if(estAbonne && montantCommande >= 100){
+    reduction = montantCommande * 0.1;
+}
+
+// Affichez un message adapté
+if(reduction > 0){
+    console.log('Réduction appliquée : -10 %');
+} else {
+    console.log('Réduction non applicable');
+}
+
+// Données du candidat :
+// age = 22
+// experience = 1
+
+// Analyse du profil : conditions multiples selon âge et expérience
+
+// Affichez un message personnalisé dans la console
+const ageCandidat = 22;
+const experience = 1;
+
+if(ageCandidat < 18){
+    console.log('Profil non éligible : âge minimum requis');
+} else if(ageCandidat >= 18 && ageCandidat <= 25){
+    if(experience > 2){
+        console.log('Jeune talent prometteur');
+    } else {
+        console.log('Profil junior à accompagner');
+    }
+} else {
+    if(experience > 5){
+        console.log('Expert confirmé');
+    } else {
+        console.log('Profil en cours de consolidation');
+    }
+}
+
+// Donnée client :
+// age = 65
+
+// Utilisez une suite de if / else if pour déterminer la tranche tarifaire
+const ageConducteur = 65;
+if(ageConducteur < 18){
+    console.log('Assurance refusée : âge minimum non atteint');
+} else if(ageConducteur >= 18 && ageConducteur <= 24){
+    console.log('Tarif jeune conducteur : 1200 €/an');
+} else if(ageConducteur >= 25 && ageConducteur <= 60){
+    console.log('Tarif standard : 850 €/an');
+} else {
+    console.log('Tarif senior : 950 €/an');
+}
+
+// Initialisation
+let somme = 0;
+
+// Ajouter ici une boucle for pour parcourir les nombres de 1 à 100
+for(let i = 1; i <= 100; i++){
+    if(i % 2 !== 0){
+        somme += i * i;
+    }
+}
+console.log('Somme des carrés des nombres impairs entre 1 et 100 :', somme);
+
+// Initialisation
+let total = 0;
+let compteur = 1;
+
+// Ajouter ici une boucle while pour accumuler jusqu’à dépasser 200
+while(total <= 200){
+    total += compteur;
+    compteur++;
+}
+console.log('compteur :', compteur - 1);
+
+// Initialisation
+let totalPair = 0;
+let totalImpair = 0;
+
+// Ajouter ici une boucle for de 1 à 30
+for(let i = 1; i <= 30; i++){
+    if(i % 2 === 0){
+        totalPair += i;
+    } else {
+        totalImpair += i;
+    }
+}
+
+// Puis afficher le plus grand total à la fin
+if(totalPair > totalImpair){
+    console.log('Pair plus élevé :', totalPair);
+} else if(totalImpair > totalPair){
+    console.log('Impair plus élevé :', totalImpair);
+} else {
+    console.log('égaux :', totalPair);
+}
+
+
+
+// Initialisation
+
+
+// Compléter ici la boucle do...while
+// Alterner Ping et Pong 5 fois chacun
