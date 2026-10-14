@@ -276,10 +276,15 @@ if(totalPair > totalImpair){
     console.log('égaux :', totalPair);
 }
 
-
-
 // Initialisation
-
+let compteurP = 1;
 
 // Compléter ici la boucle do...while
-// Alterner Ping et Pong 5 fois chacun
+do {
+    if(compteurP % 2 !== 0){
+        console.log('Ping');
+    } else {
+        console.log('Pong');
+    }
+    compteurP++;
+} while(compteurP <= 10);
