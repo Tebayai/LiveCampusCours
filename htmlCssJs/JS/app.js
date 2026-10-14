@@ -92,3 +92,47 @@ const prixFinalTTC = prixTTC - montantRemiseTTC;
 console.log(`Le prix final TTC après remise est de ${prixFinalTTC} euros.`);
 
 
+// Déclarez vos variables ici
+// Exemple de notes à utiliser :
+// note1 = 17
+// note2 = 15
+
+// Calculez la moyenne
+const note1 = 17;
+const note2 = 15;
+const moyenne = (note1 + note2) / 2;
+
+// Affichez le bon message selon la moyenne obtenue
+switch (true) {
+    case (moyenne >= 16):
+        console.log('Excellent');
+        break;
+    case (moyenne >= 14):
+        console.log('Bien');
+        break;
+    case (moyenne >= 10):
+        console.log('Passable');
+        break;
+    default:
+        console.log('Insuffisant');
+        break;
+}
+
+// Données de la personne :
+// age = 10
+// taille = 135
+
+// Stocker les données dans des variables
+const age = 10;
+const taille = 135;
+
+// Tester les conditions d'accès et afficher le bon message
+if (age < 12 && taille < 140) {
+    console.log('Accès refusé : âge et taille insuffisants')
+} else if (age < 12){
+    console.log('Accès refusé : trop jeune ');
+} else if (taille < 140){
+    console.log('Accès refusé : taille insuffisante');
+}else{
+    console.log('Accès autorisé');
+}
