@@ -217,6 +217,32 @@ if(ageCandidat < 18){
     }
 }
 
+// Données de l’apprenant :
+// note = 11
+// presence = 70
+
+// Évaluez la note puis la présence si nécessaire
+const note = 11;
+const presence = 70;
+
+if(note < 10){
+    console.log('Échec : note insuffisante');
+} else if(presence < 75){
+    console.log('Échec : présence insuffisante');
+} else if(note >= 10 && note <= 12){
+    console.log('Module validé de justesse');
+} else if(note > 12){
+    console.log('Module validé avec succès');
+}
+
+// Affichez un message d’état dans la console
+if(note < 10 || presence < 75){
+    console.log('Module non validé');
+} else {
+    console.log('Module validé');
+}
+
+
 // Donnée client :
 // age = 65
 
@@ -288,3 +314,41 @@ do {
     }
     compteurP++;
 } while(compteurP <= 10);
+
+// Initialisation
+let nombre = 1;
+
+// Compléter ici avec une boucle while jusqu'à trouver le bon nombre
+while(true){
+    if(nombre > 50 && nombre % 7 === 0){
+        console.log('Premier nombre supérieur à 50 et divisible par 7 :', nombre);
+        break;
+    }
+    nombre++;
+}
+
+// Boucle avec pas de 3 heures
+for (let heure = 0; heure <= 24; heure += 3) {
+  // Compléter ici la logique d'affichage avec exclusion de 12h
+  if(heure === 12){
+      continue;
+  }
+  console.log('Heure d\'ouverture :', heure + 'h');
+}
+
+// Boucle de 50 à 1
+for (let i = 50; i >= 1; i--) {
+  // Compléter ici avec conditions de filtrage
+  if(i % 5 === 0 && i % 10 !== 0){
+      console.log(i);
+  }
+}
+
+
+const legumes = ['carotte', 'brocoli', 'épinard', 'poivron', 'tomate'];
+
+const legumes2 = legumes.reduce((acc, legume) =>{
+    console.log(legume);
+    return acc + legume;
+}, "");
+console.log('Longueur totale des légumes :', legumes2);
