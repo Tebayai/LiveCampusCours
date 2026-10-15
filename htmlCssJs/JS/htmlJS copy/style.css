@@ -1,7 +1,5 @@
-li {
-  margin-bottom: 0.5rem;
-}
-button {
-  margin-left: 1rem;
-  cursor: pointer;
+/* Zone de style générique */
+body {
+    font-family: Arial, sans-serif;
+    padding: 2rem;
 }
