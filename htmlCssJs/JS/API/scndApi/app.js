@@ -1,57 +1,38 @@
-const categorySelect = document.getElementById("category-select");
-const productList = document.getElementById("product-list");
-let products = [];
+const checkForm = document.getElementById("check-form");
+const emailInput = document.getElementById("email");
+const result = document.getElementById("result");
 
-function displayProducts(category) {
-    productList.innerHTML = "";
+checkForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-    products
-        .filter((product) => category === "all" || product.category === category)
-        .forEach((product) => {
-            const card = document.createElement("div");
-            const image = document.createElement("img");
-            const name = document.createElement("h2");
-            const price = document.createElement("p");
+    const email = emailInput.value.trim().toLowerCase();
+    result.innerHTML = "";
 
-            image.src = product.image;
-            image.alt = product.name;
-            name.textContent = product.name;
-            price.textContent = `${product.price} €`;
+    fetch("https://grippy.learn.pierre-godino.com/api/mock/dom-user-base")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Erreur");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const user = data.find((item) => item.email.toLowerCase() === email);
 
-            card.append(image, name, price);
-            productList.append(card);
+            if (user) {
+                const name = document.createElement("p");
+                const userEmail = document.createElement("p");
+
+                name.textContent = `${user.firstName} ${user.lastName}`;
+                userEmail.textContent = user.email;
+
+                result.append(name, userEmail);
+            } else {
+                const message = document.createElement("p");
+                message.textContent = "Rien";
+                result.append(message);
+            }
+        })
+        .catch((error) => {
+            console.error(error);
         });
-}
-
-fetch("https://grippy.learn.pierre-godino.com/api/mock/dom-products")
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("Erreur");
-        }
-        return response.json();
-    })
-    .then((data) => {
-        products = data;
-
-        const allOption = document.createElement("option");
-        allOption.value = "all";
-        allOption.textContent = "Toutes";
-        categorySelect.append(allOption);
-
-        const categories = [...new Set(products.map((product) => product.category))];
-        categories.forEach((category) => {
-            const option = document.createElement("option");
-            option.value = category;
-            option.textContent = category;
-            categorySelect.append(option);
-        });
-
-        displayProducts("all");
-    })
-    .catch((error) => {
-        console.error(error);
-    });
-
-categorySelect.addEventListener("change", () => {
-    displayProducts(categorySelect.value);
 });

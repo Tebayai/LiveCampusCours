@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Catalogue</title>
+    <meta charset="UTF-8">
+    <title>Vérification d'inscription</title>
 </head>
 <body>
-  <h1>Catalogue Produits</h1>
-  <label for="category-select">Choisissez une catégorie :</label>
-  <select id="category-select">
-    <!-- Les options seront générées dynamiquement -->
-  </select>
-  <div id="product-list">
-    <!-- Les produits seront affichés ici -->
-  </div>
-  <script src="app.js"></script>
+    <h1>Vérifier une inscription</h1>
+    <form id="check-form">
+        <label>Email : <input type="email" id="email" required></label>
+        <button type="submit">Vérifier</button>
+    </form>
+    <div id="result"></div>
+    <script src="app.js"></script>
 </body>
 </html>
