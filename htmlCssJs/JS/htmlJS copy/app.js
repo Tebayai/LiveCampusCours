@@ -1,19 +1,10 @@
+// Compléter ici pour sélectionner les éléments et gérer l’événement
 
-const body = document.querySelector("body");
-const randomColor = () =>{
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const paragraph = document.querySelector("p");
+    const button = document.querySelector("button");
 
-const createConfetti = () => {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-    confetti.style.backgroundColor = randomColor();
-    confetti.style.left = `${Math.random() * window.innerWidth}px`;
-    confetti.style.top = `${Math.random() * window.innerHeight}px`;
-    body.append(confetti);
-}
-
-setInterval(createConfetti, 10);
+    button.addEventListener("click", () => {
+        paragraph.textContent = "message2";
+    });
+});
