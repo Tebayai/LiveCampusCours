@@ -1,1 +1,6 @@
-/* Ajoutez ici du style si nécessaire */
+/* Classe pour mettre en valeur les paragraphes */
+.highlight {
+  background-color: #ffeb3b;
+  font-weight: bold;
+  padding: 0.3rem;
+}
