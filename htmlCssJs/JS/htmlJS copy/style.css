@@ -1,6 +1,7 @@
-/* Classe pour mettre en valeur les paragraphes */
-.highlight {
-  background-color: #ffeb3b;
-  font-weight: bold;
-  padding: 0.3rem;
+li {
+  margin-bottom: 0.5rem;
+}
+button {
+  margin-left: 1rem;
+  cursor: pointer;
 }

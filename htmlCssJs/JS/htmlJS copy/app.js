@@ -1,12 +1,12 @@
-// Sélectionner les éléments à modifier et ajouter la classe CSS lors du clic
-
 document.addEventListener("DOMContentLoaded", () => {
-    const paragraphs = document.querySelectorAll("p");
-    const button = document.querySelector("button");
+    const taches = document.getElementById("taches");
 
-    button.addEventListener("click", () => {
-        paragraphs.forEach(paragraph => {
-            paragraph.classList.add("highlight");
-        });
+    taches.addEventListener("click", (event) => {
+        const bouton = event.target.closest("button");
+        const li = bouton.closest("li");
+
+        if (li) {
+            taches.removeChild(li);
+        }
     });
 });
