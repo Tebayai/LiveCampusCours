@@ -3,6 +3,12 @@ const priceCryptos = document.querySelector('#price-cryptos');
 const textCryptosResponse = result => `Prix d'achat du ${result.crypto} en EUR : ${result.price}€`;
 const updateInterval = 60000;
 
+/* Affichage du loader pendant la récupération du prix */
+const showLoader = element =>{
+    element.textContent = 'Chargement...';
+    element.className = 'loading';
+};
+
 /* Affichage de la variation des prix vert=>Monte rouge=>Baisse gris=>Stable */
 let previousPrices = {};
 
@@ -31,7 +37,8 @@ const fetchPrices = crypto =>
         });
 
 /* Récupérer le prix du BTC en euro */
-const fetchBTCPrice = () =>
+const fetchBTCPrice = () =>{
+    showLoader(priceContainer);
     fetchPrices('BTC')
         .then(result =>{
             priceContainer.textContent = `Prix d'achat du BTC en EUR : ${result.price}€`;
@@ -39,7 +46,9 @@ const fetchBTCPrice = () =>
         })
         .catch(error =>{
             priceContainer.textContent = 'Erreur';
+            priceContainer.className = '';
         });
+};
 
 fetchBTCPrice();
 setInterval(fetchBTCPrice, updateInterval);
@@ -47,7 +56,8 @@ setInterval(fetchBTCPrice, updateInterval);
 /* Récupérer les prix des 6 cryptos en euro */
 const cryptos = ['BTC', 'ETH', 'ADA', 'DOT', 'CRO', 'MATIC'];
 
-const updateAllPrices = () =>
+const updateAllPrices = () =>{
+    priceCryptos.innerHTML = '<li class="loading">Chargement...</li>';
     Promise.all(cryptos.map(fetchPrices))
         .then(results =>{
             priceCryptos.innerHTML = results.map(result =>
@@ -57,6 +67,7 @@ const updateAllPrices = () =>
         .catch(error =>{
             priceCryptos.textContent = 'Erreur';
         });
+};
 
 updateAllPrices();
 setInterval(updateAllPrices, updateInterval);
@@ -67,7 +78,8 @@ const selectedCryptoPrice = document.querySelector('#selected-crypto-price');
 
 let intervalId;
 
-const updateSelectedPrice = selectedCrypto =>
+const updateSelectedPrice = selectedCrypto =>{
+    showLoader(selectedCryptoPrice);
     fetchPrices(selectedCrypto)
         .then(result =>{
             selectedCryptoPrice.textContent = textCryptosResponse(result);
@@ -75,7 +87,9 @@ const updateSelectedPrice = selectedCrypto =>
         })
         .catch(error =>{
             selectedCryptoPrice.textContent = 'Erreur';
+            selectedCryptoPrice.className = '';
         });
+};
 
 cryptoSelect.addEventListener('change', () => {
     const selectedCrypto = cryptoSelect.value;

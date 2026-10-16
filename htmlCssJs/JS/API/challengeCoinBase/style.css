@@ -9,3 +9,8 @@
 .gris {
     color: gray;
 }
+
+.loading {
+    font-style: italic;
+    color: gray;
+}
