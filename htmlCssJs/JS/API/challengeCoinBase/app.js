@@ -1,6 +1,8 @@
 const priceContainer = document.querySelector('#Price-container');
 const priceCryptos = document.querySelector('#price-cryptos');
-const textCryptosResponse = result => `Prix d'achat du ${result.crypto} en EUR : ${result.price}€`;
+const currencySelect = document.querySelector('#currency-select');
+const currencySymbols = {EUR: '€', USD: '$'};
+const textCryptosResponse = result => `Prix d'achat du ${result.crypto} en ${result.currency} : ${result.price}${currencySymbols[result.currency]}`;
 const updateInterval = 60000;
 
 /* Affichage du loader pendant la récupération du prix */
@@ -23,8 +25,9 @@ function previousPrice(crypto, currentPrice) {
 }
 
 /* Fetch unique crypto */
-const fetchPrices = crypto =>
-    fetch(`https://api.coinbase.com/v2/prices/${crypto}-EUR/buy`)
+const fetchPrices = crypto =>{
+    const currency = currencySelect.value;
+    return fetch(`https://api.coinbase.com/v2/prices/${crypto}-${currency}/buy`)
         .then(response =>{
             if(!response.ok){
                 throw new Error('Erreur Coinbase api');
@@ -33,15 +36,16 @@ const fetchPrices = crypto =>
         })
         .then(data =>{
             const price = data.data.amount;
-            return {crypto: crypto, price};
+            return {crypto: crypto, price, currency};
         });
+};
 
-/* Récupérer le prix du BTC en euro */
+/* Récupérer le prix du BTC */
 const fetchBTCPrice = () =>{
     showLoader(priceContainer);
     fetchPrices('BTC')
         .then(result =>{
-            priceContainer.textContent = `Prix d'achat du BTC en EUR : ${result.price}€`;
+            priceContainer.textContent = textCryptosResponse(result);
             priceContainer.className = previousPrice('single-BTC', result.price);
         })
         .catch(error =>{
@@ -53,7 +57,7 @@ const fetchBTCPrice = () =>{
 fetchBTCPrice();
 setInterval(fetchBTCPrice, updateInterval);
 
-/* Récupérer les prix des 6 cryptos en euro */
+/* Récupérer les prix des 6 cryptos */
 const cryptos = ['BTC', 'ETH', 'ADA', 'DOT', 'CRO', 'MATIC'];
 
 const updateAllPrices = () =>{
@@ -100,4 +104,15 @@ cryptoSelect.addEventListener('change', () => {
     selectedHistoryContainer.innerHTML = '';
     updateSelectedPrice(selectedCrypto);
     intervalId = setInterval(() => updateSelectedPrice(selectedCrypto), updateInterval);
+});
+
+/* Changement de devise EUR/USD */
+currencySelect.addEventListener('change', () => {
+    previousPrices = {};
+    fetchBTCPrice();
+    updateAllPrices();
+    if (intervalId) {
+        selectedHistoryContainer.innerHTML = '';
+        updateSelectedPrice(cryptoSelect.value);
+    }
 });
