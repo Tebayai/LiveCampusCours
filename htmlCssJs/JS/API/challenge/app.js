@@ -1,5 +1,6 @@
 const priceContainer = document.querySelector('#Price-container');
 const priceCryptos = document.querySelector('#price-cryptos');
+const textCryptosResponse = result => `Prix d'achat du ${result.crypto} en EUR : ${result.price}€`;
 
 /* Récupérer le prix du BTC en euro */
 fetch('https://api.coinbase.com/v2/prices/BTC-EUR/buy')
@@ -34,7 +35,7 @@ const fetchPrices = crypto =>
 
 Promise.all(cryptos.map(fetchPrices))
     .then(results =>{
-        priceCryptos.innerHTML = results.map(result => `<li>Prix d'achat du ${result.crypto} en EUR : ${result.price}€</li>`).join('');
+        priceCryptos.innerHTML = results.map(result => `<li>${textCryptosResponse(result)}</li>`).join('');
     })
     .catch(error =>{
         priceCryptos.textContent = 'Erreur';
@@ -44,23 +45,21 @@ Promise.all(cryptos.map(fetchPrices))
 const cryptoSelect = document.querySelector('#crypto-select');
 const selectedCryptoPrice = document.querySelector('#selected-crypto-price');
 
-cryptoSelect.addEventListener('change', () => {
-    const selectedCrypto = cryptoSelect.value;
-    fetch(`https://api.coinbase.com/v2/prices/${selectedCrypto}-EUR/buy`)
-        .then(response =>{
-            if(!response.ok){
-                throw new Error('Erreur Coinbase api');
-            }
-            return response.json();
-        })
-        .then(data =>{
-            const price = data.data.amount;
-            setInterval(()=>{
-                selectedCryptoPrice.textContent = `Prix d'achat du ${selectedCrypto} en EUR : ${price}€`;
-                console.log('prix updated');
-            }, 1000)
+let intervalId;
+
+const updateSelectedPrice = selectedCrypto =>
+    fetchPrices(selectedCrypto)
+        .then(result =>{
+            selectedCryptoPrice.textContent = textCryptosResponse(result);
+            console.log('prix updated');
         })
         .catch(error =>{
             selectedCryptoPrice.textContent = 'Erreur';
         });
+
+cryptoSelect.addEventListener('change', () => {
+    const selectedCrypto = cryptoSelect.value;
+    clearInterval(intervalId);
+    updateSelectedPrice(selectedCrypto);
+    intervalId = setInterval(() => updateSelectedPrice(selectedCrypto), 60000);
 });
