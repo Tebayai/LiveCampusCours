@@ -75,6 +75,7 @@ setInterval(updateAllPrices, updateInterval);
 /* Récupérer le prix de la crypto select */
 const cryptoSelect = document.querySelector('#crypto-select');
 const selectedCryptoPrice = document.querySelector('#selected-crypto-price');
+const selectedHistoryContainer = document.querySelector('.selected-history');
 
 let intervalId;
 
@@ -82,8 +83,10 @@ const updateSelectedPrice = selectedCrypto =>{
     showLoader(selectedCryptoPrice);
     fetchPrices(selectedCrypto)
         .then(result =>{
+            const trend = previousPrice(`select-${result.crypto}`, result.price);
             selectedCryptoPrice.textContent = textCryptosResponse(result);
-            selectedCryptoPrice.className = previousPrice(`select-${result.crypto}`, result.price);
+            selectedCryptoPrice.className = trend;
+            selectedHistoryContainer.innerHTML += `<li class="${trend}">${textCryptosResponse(result)}</li>`;
         })
         .catch(error =>{
             selectedCryptoPrice.textContent = 'Erreur';
@@ -94,6 +97,7 @@ const updateSelectedPrice = selectedCrypto =>{
 cryptoSelect.addEventListener('change', () => {
     const selectedCrypto = cryptoSelect.value;
     clearInterval(intervalId);
+    selectedHistoryContainer.innerHTML = '';
     updateSelectedPrice(selectedCrypto);
     intervalId = setInterval(() => updateSelectedPrice(selectedCrypto), updateInterval);
 });

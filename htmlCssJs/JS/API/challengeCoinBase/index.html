@@ -13,15 +13,20 @@
     </ul>
     <!-- Choix de la crypto à afficher -->
     <div class="crypto-select-container">
-        <select id="crypto-select">
-            <option value="BTC">BTC</option>
-            <option value="ETH">ETH</option>
-            <option value="ADA">ADA</option>
-            <option value="DOT">DOT</option>
-            <option value="CRO">CRO</option>
-            <option value="MATIC">MATIC</option>
-        </select>
-        <span id="selected-crypto-price"></span>
+        <div class="crypto-select-wrapper">
+            <select id="crypto-select">
+                <option value="BTC">BTC</option>
+                <option value="ETH">ETH</option>
+                <option value="ADA">ADA</option>
+                <option value="DOT">DOT</option>
+                <option value="CRO">CRO</option>
+                <option value="MATIC">MATIC</option>
+            </select>
+            <span id="selected-crypto-price"></span>
+        </div>
+        <ul class="selected-history">
+            <!-- historique des prix de la crypto sélectionnée -->
+        </ul>
     </div>
 
     <script src="app.js"></script>
