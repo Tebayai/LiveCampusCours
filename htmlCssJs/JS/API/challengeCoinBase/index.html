@@ -23,6 +23,17 @@
 
     <main class="layout">
         <div class="sidebar">
+            <!-- Ajout d'une crypto par l'utilisateur -->
+            <section class="add-crypto">
+                <h2>Ajouter une crypto</h2>
+                <p class="add-crypto-text">Saisis le symbole d'une cryptomonnaie pour l'ajouter à la liste.</p>
+                <div class="add-crypto-form">
+                    <input type="text" id="new-crypto" placeholder="ex: SOL">
+                    <button id="add-crypto-button">Ajouter</button>
+                </div>
+                <p id="add-crypto-message" class="add-crypto-message"></p>
+            </section>
+
             <!-- Choix de la crypto à afficher -->
             <section class="price-card">
                 <select id="crypto-select">
@@ -39,25 +50,23 @@
                     <!-- historique des prix de la crypto sélectionnée -->
                 </ul>
             </section>
-
-            <!-- Ajout d'une crypto par l'utilisateur -->
-            <section class="add-crypto">
-                <h2>Ajouter une crypto</h2>
-                <p class="add-crypto-text">Saisis le symbole d'une cryptomonnaie pour l'ajouter à la liste.</p>
-                <div class="add-crypto-form">
-                    <input type="text" id="new-crypto" placeholder="Symbole, ex. SOL">
-                    <button id="add-crypto-button">Ajouter</button>
-                </div>
-                <p id="add-crypto-message" class="add-crypto-message"></p>
-            </section>
         </div>
 
-        <section class="crypto-list">
-            <h2>Toutes les cryptos</h2>
-            <ul id="price-cryptos">
-                <!-- prix des 6 cryptos en euro -->
-            </ul>
-        </section>
+        <div class="content">
+            <section class="crypto-list">
+                <h2>Toutes les cryptos</h2>
+                <ul id="price-cryptos">
+                    <!-- prix des 6 cryptos en euro -->
+                </ul>
+            </section>
+
+            <!-- Graphique d'évolution du prix de la crypto sélectionnée -->
+            <section class="chart">
+                <h2 id="chart-title">Évolution du prix</h2>
+                <div id="price-chart" class="price-chart"></div>
+                <p id="chart-range" class="chart-range"></p>
+            </section>
+        </div>
     </main>
 
     <script src="app.js"></script>

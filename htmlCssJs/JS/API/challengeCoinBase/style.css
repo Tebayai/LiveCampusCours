@@ -1,12 +1,11 @@
 :root {
-    --bg: #f9f8f6;
-    --surface: #fff;
+    --bg: #ebe1ce;
+    --surface: #e0c591;
     --dark: #1c1b19;
     --text: #1a1a1a;
-    --muted: #6b6963;
-    --border: #e6e3de;
+    --muted: #44423d;
+    --border: #1a1a1a;
     --hover: #f0eeea;
-    --blue: #2a6fc9;
     --mono: "IBM Plex Mono", monospace;
 }
 
@@ -97,11 +96,12 @@ body {
 
 /* Ajout d'une crypto */
 .add-crypto {
-    margin-top: 24px;
+    margin-bottom : 24px;
 }
 
 .add-crypto h2,
-.crypto-list h2 {
+.crypto-list h2,
+.chart h2 {
     margin-bottom: 8px;
     font-size: 0.85rem;
     color: var(--muted);
@@ -121,7 +121,7 @@ body {
     min-width: 0;
     font: inherit;
     padding: 12px 14px;
-    background: var(--surface);
+    background: white;
     border: 1px solid var(--border);
     border-radius: 10px;
     text-transform: uppercase;
@@ -131,7 +131,7 @@ body {
     font: inherit;
     font-weight: 700;
     padding: 12px 18px;
-    background: var(--blue);
+    background: var(--dark);
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -163,6 +163,34 @@ body {
 
 #price-cryptos li:hover {
     background: var(--hover);
+}
+
+/* Graphique */
+.chart {
+    margin-top: 32px;
+}
+
+.price-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 140px;
+    padding: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.chart-bar {
+    flex: 1;
+    max-width: 24px;
+    background: currentColor;
+    border-radius: 4px 4px 0 0;
+}
+
+.chart-range {
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
 }
 
 /* Variation des prix */
@@ -214,7 +242,7 @@ body {
 
     #selected-crypto-price,
     #Price-container {
-        font-size: 1.75rem;
+        font-size: 1.4rem;
     }
 
     .add-crypto {
@@ -240,7 +268,8 @@ body {
         margin-top: 0;
     }
 
-    .crypto-list h2 {
+    .crypto-list h2,
+    .chart h2 {
         margin: 0;
         padding: 0 16px 12px;
         border-bottom: 1px solid var(--border);
