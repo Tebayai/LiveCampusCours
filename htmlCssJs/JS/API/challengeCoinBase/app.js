@@ -1,6 +1,7 @@
 const priceContainer = document.querySelector('#Price-container');
 const priceCryptos = document.querySelector('#price-cryptos');
-const currencySelect = document.querySelector('#currency-select');
+const currencyToggle = document.querySelector('#currency-toggle');
+const getCurrency = () => currencyToggle.querySelector('input:checked').value;
 const currencySymbols = {EUR: '€', USD: '$'};
 const textCryptosResponse = result => `Prix d'achat du ${result.crypto} en ${result.currency} : ${result.price}${currencySymbols[result.currency]}`;
 const updateInterval = 60000;
@@ -26,7 +27,7 @@ function previousPrice(crypto, currentPrice) {
 
 /* Fetch unique crypto */
 const fetchPrices = crypto =>{
-    const currency = currencySelect.value;
+    const currency = getCurrency();
     return fetch(`https://api.coinbase.com/v2/prices/${crypto}-${currency}/buy`)
         .then(response =>{
             if(!response.ok){
@@ -40,39 +41,6 @@ const fetchPrices = crypto =>{
         });
 };
 
-/* Graphique d'évolution : barres proportionnelles au prix, colorées selon la tendance */
-const chartTitle = document.querySelector('#chart-title');
-const priceChart = document.querySelector('#price-chart');
-const chartRange = document.querySelector('#chart-range');
-const maxChartPoints = 20;
-let chartPrices = [];
-
-const renderChart = () =>{
-    const min = Math.min(...chartPrices);
-    const max = Math.max(...chartPrices);
-    const symbol = currencySymbols[currencySelect.value];
-    priceChart.innerHTML = chartPrices.map((price, i) =>{
-        const height = max === min ? 100 : 10 + 90 * (price - min) / (max - min);
-        const before = chartPrices[i - 1];
-        const trend = before === undefined || price === before ? 'gris' : price > before ? 'vert' : 'rouge';
-        return `<div class="chart-bar ${trend}" style="height: ${height}%" title="${price}${symbol}"></div>`;
-    }).join('');
-    chartRange.textContent = `Min : ${min}${symbol} · Max : ${max}${symbol}`;
-};
-
-const addChartPoint = (crypto, price) =>{
-    chartTitle.textContent = `Évolution du ${crypto} en ${currencySelect.value}`;
-    chartPrices.push(Number(price));
-    if (chartPrices.length > maxChartPoints) chartPrices.shift();
-    renderChart();
-};
-
-const resetChart = () =>{
-    chartPrices = [];
-    priceChart.innerHTML = '';
-    chartRange.textContent = '';
-};
-
 /* Récupérer le prix du BTC */
 const fetchBTCPrice = () =>{
     showLoader(priceContainer);
@@ -80,8 +48,6 @@ const fetchBTCPrice = () =>{
         .then(result =>{
             priceContainer.textContent = textCryptosResponse(result);
             priceContainer.className = previousPrice('single-BTC', result.price);
-            // Le graphique suit le BTC tant qu'aucune crypto n'a été choisie
-            if (!intervalId) addChartPoint('BTC', result.price);
         })
         .catch(error =>{
             priceContainer.textContent = 'Erreur';
@@ -126,7 +92,6 @@ const updateSelectedPrice = selectedCrypto =>{
             const trend = previousPrice(`select-${result.crypto}`, result.price);
             selectedCryptoPrice.textContent = textCryptosResponse(result);
             selectedCryptoPrice.className = trend;
-            addChartPoint(result.crypto, result.price);
             if (lastPrice !== undefined) {
                 selectedHistoryContainer.innerHTML += `<li>Ancien prix : ${lastPrice}${currencySymbols[result.currency]}</li>`;
             }
@@ -141,15 +106,44 @@ cryptoSelect.addEventListener('change', () => {
     const selectedCrypto = cryptoSelect.value;
     clearInterval(intervalId);
     selectedHistoryContainer.innerHTML = '';
-    resetChart();
     updateSelectedPrice(selectedCrypto);
     intervalId = setInterval(() => updateSelectedPrice(selectedCrypto), updateInterval);
 });
 
+/* Ajout d'une crypto par l'utilisateur */
+const addCryptoForm = document.querySelector('#add-crypto-form');
+const newCryptoInput = document.querySelector('#new-crypto');
+const addCryptoMessage = document.querySelector('#add-crypto-message');
+
+const showAddMessage = (text, isError) =>{
+    addCryptoMessage.textContent = text;
+    addCryptoMessage.className = isError ? 'add-crypto-message rouge' : 'add-crypto-message';
+};
+
+addCryptoForm.addEventListener('submit', event =>{
+    event.preventDefault();
+    const crypto = newCryptoInput.value.trim().toUpperCase();
+    if (!crypto) return showAddMessage('Saisis un symbole.', true);
+    if (cryptos.includes(crypto)) return showAddMessage(`${crypto} est déjà dans la liste.`, true);
+
+    showAddMessage('Recherche...', false);
+    // On vérifie que Coinbase connaît la crypto avant de l'ajouter
+    fetchPrices(crypto)
+        .then(() =>{
+            cryptos.push(crypto);
+            cryptoSelect.add(new Option(crypto, crypto));
+            updateAllPrices();
+            newCryptoInput.value = '';
+            showAddMessage(`${crypto} ajoutée.`, false);
+        })
+        .catch(() =>{
+            showAddMessage(`${crypto} introuvable sur Coinbase.`, true);
+        });
+});
+
 /* Changement de devise EUR/USD */
-currencySelect.addEventListener('change', () => {
+currencyToggle.addEventListener('change', () => {
     previousPrices = {};
-    resetChart();
     fetchBTCPrice();
     updateAllPrices();
     if (intervalId) {

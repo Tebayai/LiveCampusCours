@@ -32,19 +32,39 @@ body {
     font-size: 1.25rem;
 }
 
-.currency label {
+.currency-label {
     display: none;
     color: var(--muted);
 }
 
-#currency-select {
-    font: inherit;
-    font-size: 0.85rem;
+/* Bouton EUR / USD */
+.currency-toggle {
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+}
+
+.currency-toggle input {
+    position: absolute;
+    opacity: 0;
+}
+
+.currency-toggle span {
+    display: block;
+    padding: 6px 12px;
+    font-size: 0.8rem;
     font-weight: 700;
-    padding: 8px 12px;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    color: var(--muted);
     border-radius: 8px;
+    cursor: pointer;
+}
+
+.currency-toggle input:checked + span {
+    background: #fff;
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 /* Layout */
@@ -100,8 +120,7 @@ body {
 }
 
 .add-crypto h2,
-.crypto-list h2,
-.chart h2 {
+.crypto-list h2 {
     margin-bottom: 8px;
     font-size: 0.85rem;
     color: var(--muted);
@@ -165,34 +184,6 @@ body {
     background: var(--hover);
 }
 
-/* Graphique */
-.chart {
-    margin-top: 32px;
-}
-
-.price-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 4px;
-    height: 140px;
-    padding: 8px;
-    border-bottom: 1px solid var(--border);
-}
-
-.chart-bar {
-    flex: 1;
-    max-width: 24px;
-    background: currentColor;
-    border-radius: 4px 4px 0 0;
-}
-
-.chart-range {
-    margin-top: 8px;
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    color: var(--muted);
-}
-
 /* Variation des prix */
 .vert {
     color: #2e9e5b;
@@ -224,7 +215,7 @@ body {
         gap: 12px;
     }
 
-    .currency label {
+    .currency-label {
         display: block;
     }
 
@@ -268,8 +259,7 @@ body {
         margin-top: 0;
     }
 
-    .crypto-list h2,
-    .chart h2 {
+    .crypto-list h2 {
         margin: 0;
         padding: 0 16px 12px;
         border-bottom: 1px solid var(--border);
