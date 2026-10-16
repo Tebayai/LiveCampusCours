@@ -1,0 +1,16 @@
+#houses-container{
+    display: flex;
+    gap: 1rem;
+}
+
+.house {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    border-radius: 4px;
+    background-color: #272727;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+}
