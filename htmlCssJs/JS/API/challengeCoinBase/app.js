@@ -3,7 +3,7 @@ const priceCryptos = document.querySelector('#price-cryptos');
 const currencyToggle = document.querySelector('#currency-toggle');
 const getCurrency = () => currencyToggle.querySelector('input:checked').value;
 const currencySymbols = {EUR: '€', USD: '$'};
-const textCryptosResponse = result => `Prix d'achat du ${result.crypto} en ${result.currency} : ${result.price}${currencySymbols[result.currency]}`;
+const textCryptosResponse = (result, trend) => `Prix d'achat du ${result.crypto} en ${result.currency} : <span class="${trend}">${result.price}${currencySymbols[result.currency]}</span>`;
 const updateInterval = 60000;
 
 /* Affichage du loader pendant la récupération du prix */
@@ -46,8 +46,8 @@ const fetchBTCPrice = () =>{
     showLoader(priceContainer);
     fetchPrices('BTC')
         .then(result =>{
-            priceContainer.textContent = textCryptosResponse(result);
-            priceContainer.className = previousPrice('single-BTC', result.price);
+            priceContainer.innerHTML = textCryptosResponse(result, previousPrice('single-BTC', result.price));
+            priceContainer.className = '';
         })
         .catch(error =>{
             priceContainer.textContent = 'Erreur';
@@ -66,7 +66,7 @@ const updateAllPrices = () =>{
     Promise.all(cryptos.map(fetchPrices))
         .then(results =>{
             priceCryptos.innerHTML = results.map(result =>
-                `<li class="${previousPrice(`list-${result.crypto}`, result.price)}">${textCryptosResponse(result)}</li>`
+                `<li>${textCryptosResponse(result, previousPrice(`list-${result.crypto}`, result.price))}</li>`
             ).join('');
         })
         .catch(error =>{
@@ -83,18 +83,23 @@ const selectedCryptoPrice = document.querySelector('#selected-crypto-price');
 const selectedHistoryContainer = document.querySelector('.selected-history');
 
 let intervalId;
+let lastTrend = 'gris';
 
 const updateSelectedPrice = selectedCrypto =>{
     showLoader(selectedCryptoPrice);
     fetchPrices(selectedCrypto)
         .then(result =>{
-            const lastPrice = previousPrices[`select-${result.crypto}`];
-            const trend = previousPrice(`select-${result.crypto}`, result.price);
-            selectedCryptoPrice.textContent = textCryptosResponse(result);
-            selectedCryptoPrice.className = trend;
+            const key = `select-${result.crypto}`;
+            // Pas encore d'ancien prix pour le select : on compare avec celui de la liste
+            if (previousPrices[key] === undefined) previousPrices[key] = previousPrices[`list-${result.crypto}`];
+            const lastPrice = previousPrices[key];
+            const trend = previousPrice(key, result.price);
+            selectedCryptoPrice.innerHTML = textCryptosResponse(result, trend);
+            selectedCryptoPrice.className = '';
             if (lastPrice !== undefined) {
-                selectedHistoryContainer.innerHTML += `<li>Ancien prix : ${lastPrice}${currencySymbols[result.currency]}</li>`;
+                selectedHistoryContainer.innerHTML += `<li>Ancien prix : <span class="${lastTrend}">${lastPrice}${currencySymbols[result.currency]}</span></li>`;
             }
+            lastTrend = trend;
         })
         .catch(error =>{
             selectedCryptoPrice.textContent = 'Erreur';
@@ -106,6 +111,7 @@ cryptoSelect.addEventListener('change', () => {
     const selectedCrypto = cryptoSelect.value;
     clearInterval(intervalId);
     selectedHistoryContainer.innerHTML = '';
+    lastTrend = 'gris';
     updateSelectedPrice(selectedCrypto);
     intervalId = setInterval(() => updateSelectedPrice(selectedCrypto), updateInterval);
 });
@@ -148,6 +154,7 @@ currencyToggle.addEventListener('change', () => {
     updateAllPrices();
     if (intervalId) {
         selectedHistoryContainer.innerHTML = '';
+        lastTrend = 'gris';
         updateSelectedPrice(cryptoSelect.value);
     }
 });
