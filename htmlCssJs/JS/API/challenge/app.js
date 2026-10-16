@@ -1,6 +1,7 @@
 const priceContainer = document.querySelector('#Price-container');
 const priceCryptos = document.querySelector('#price-cryptos');
 
+/* Récupérer le prix du BTC en euro */
 fetch('https://api.coinbase.com/v2/prices/BTC-EUR/buy')
     .then(response =>{
         if(!response.ok){
@@ -16,7 +17,7 @@ fetch('https://api.coinbase.com/v2/prices/BTC-EUR/buy')
         priceContainer.textContent = 'Erreur';
     });
 
-/* utiliser promise.all pour récupérer les prix des 6 cryptos en euro */
+/* Récupérer les prix des 6 cryptos en euro */
 const cryptos = ['BTC', 'ETH', 'ADA', 'DOT', 'CRO', 'MATIC'];
 const fetchPrices = crypto =>
     fetch(`https://api.coinbase.com/v2/prices/${crypto}-EUR/buy`)
@@ -39,6 +40,7 @@ Promise.all(cryptos.map(fetchPrices))
         priceCryptos.textContent = 'Erreur';
     });
 
+/* Récupérer le prix de la crypto select */
 const cryptoSelect = document.querySelector('#crypto-select');
 const selectedCryptoPrice = document.querySelector('#selected-crypto-price');
 
@@ -53,7 +55,10 @@ cryptoSelect.addEventListener('change', () => {
         })
         .then(data =>{
             const price = data.data.amount;
-            selectedCryptoPrice.textContent = `Prix d'achat du ${selectedCrypto} en EUR : ${price}€`;
+            setInterval(()=>{
+                selectedCryptoPrice.textContent = `Prix d'achat du ${selectedCrypto} en EUR : ${price}€`;
+                console.log('prix updated');
+            }, 1000)
         })
         .catch(error =>{
             selectedCryptoPrice.textContent = 'Erreur';
