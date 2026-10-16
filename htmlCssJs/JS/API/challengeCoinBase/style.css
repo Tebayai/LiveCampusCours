@@ -1,9 +1,177 @@
+:root {
+    --bg: #f9f8f6;
+    --surface: #fff;
+    --dark: #1c1b19;
+    --text: #1a1a1a;
+    --muted: #6b6963;
+    --border: #e6e3de;
+    --hover: #f0eeea;
+    --blue: #2a6fc9;
+    --mono: "IBM Plex Mono", monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: "IBM Plex Sans", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px 16px;
+}
+
+.header h1 {
+    font-size: 1.25rem;
+}
+
+.currency label {
+    display: none;
+    color: var(--muted);
+}
+
+#currency-select {
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 8px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+/* Layout */
+.layout {
+    padding: 0 16px 24px;
+}
+
+/* Carte prix */
+.price-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 20px;
+    background: var(--dark);
+    color: #fff;
+    border-radius: 16px;
+}
+
+#crypto-select {
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 8px 12px;
+    background: #3a3935;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+#selected-crypto-price,
+#Price-container {
+    font-family: var(--mono);
+    font-size: 1.4rem;
+}
+
+/* Le prix BTC par défaut laisse la place au prix de la crypto choisie */
+#selected-crypto-price:empty,
+#selected-crypto-price:not(:empty) + #Price-container {
+    display: none;
+}
+
+.selected-history {
+    padding: 0;
+    list-style: none;
+    font-size: 0.8rem;
+    color: #b5b2ab;
+}
+
+/* Ajout d'une crypto */
+.add-crypto {
+    margin-top: 24px;
+}
+
+.add-crypto h2,
+.crypto-list h2 {
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.add-crypto-text {
+    display: none;
+}
+
+.add-crypto-form {
+    display: flex;
+    gap: 8px;
+}
+
+#new-crypto {
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+#add-crypto-button {
+    font: inherit;
+    font-weight: 700;
+    padding: 12px 18px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.add-crypto-message {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #2e7d4f;
+}
+
+/* Liste des cryptos */
+.crypto-list {
+    margin-top: 24px;
+}
+
+#price-cryptos {
+    padding: 0;
+    list-style: none;
+}
+
+#price-cryptos li {
+    padding: 16px 8px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.9rem;
+}
+
+#price-cryptos li:hover {
+    background: var(--hover);
+}
+
+/* Variation des prix */
 .vert {
-    color: green;
+    color: #2e9e5b;
 }
 
 .rouge {
-    color: red;
+    color: #d64545;
 }
 
 .gris {
@@ -13,4 +181,75 @@
 .loading {
     font-style: italic;
     color: gray;
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+    .header {
+        padding: 20px 28px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .currency {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .currency label {
+        display: block;
+    }
+
+    .layout {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 40px;
+        align-items: start;
+        padding: 40px 28px;
+    }
+
+    .price-card {
+        padding: 28px;
+    }
+
+    #selected-crypto-price,
+    #Price-container {
+        font-size: 1.75rem;
+    }
+
+    .add-crypto {
+        padding: 24px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+    }
+
+    .add-crypto h2 {
+        font-size: 1rem;
+        color: var(--text);
+    }
+
+    .add-crypto-text {
+        display: block;
+        margin-bottom: 16px;
+        font-size: 0.85rem;
+        color: var(--muted);
+    }
+
+    .crypto-list {
+        margin-top: 0;
+    }
+
+    .crypto-list h2 {
+        margin: 0;
+        padding: 0 16px 12px;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    #price-cryptos li {
+        padding: 18px 16px;
+    }
 }

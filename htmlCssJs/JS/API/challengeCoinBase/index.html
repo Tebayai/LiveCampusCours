@@ -2,38 +2,63 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoinBase Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>CoinBase Challenge</h1>
-    <p>Switch entre EUR/USD
-        <select id="currency-select">
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-        </select>
-    </p>
-    <div id="Price-container"></div>
-    <ul id="price-cryptos">
-        <!-- prix des 6 cryptos en euro -->
-    </ul>
-    <!-- Choix de la crypto à afficher -->
-    <div class="crypto-select-container">
-        <div class="crypto-select-wrapper">
-            <select id="crypto-select">
-                <option value="BTC">BTC</option>
-                <option value="ETH">ETH</option>
-                <option value="ADA">ADA</option>
-                <option value="DOT">DOT</option>
-                <option value="CRO">CRO</option>
-                <option value="MATIC">MATIC</option>
+    <header class="header">
+        <h1>CoinBase Challenge</h1>
+        <div class="currency">
+            <label for="currency-select">Devise</label>
+            <select id="currency-select">
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
             </select>
-            <span id="selected-crypto-price"></span>
         </div>
-        <ul class="selected-history">
-            <!-- historique des prix de la crypto sélectionnée -->
-        </ul>
-    </div>
+    </header>
+
+    <main class="layout">
+        <div class="sidebar">
+            <!-- Choix de la crypto à afficher -->
+            <section class="price-card">
+                <select id="crypto-select">
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                    <option value="ADA">ADA</option>
+                    <option value="DOT">DOT</option>
+                    <option value="CRO">CRO</option>
+                    <option value="MATIC">MATIC</option>
+                </select>
+                <span id="selected-crypto-price"></span>
+                <div id="Price-container"></div>
+                <ul class="selected-history">
+                    <!-- historique des prix de la crypto sélectionnée -->
+                </ul>
+            </section>
+
+            <!-- Ajout d'une crypto par l'utilisateur -->
+            <section class="add-crypto">
+                <h2>Ajouter une crypto</h2>
+                <p class="add-crypto-text">Saisis le symbole d'une cryptomonnaie pour l'ajouter à la liste.</p>
+                <div class="add-crypto-form">
+                    <input type="text" id="new-crypto" placeholder="Symbole, ex. SOL">
+                    <button id="add-crypto-button">Ajouter</button>
+                </div>
+                <p id="add-crypto-message" class="add-crypto-message"></p>
+            </section>
+        </div>
+
+        <section class="crypto-list">
+            <h2>Toutes les cryptos</h2>
+            <ul id="price-cryptos">
+                <!-- prix des 6 cryptos en euro -->
+            </ul>
+        </section>
+    </main>
 
     <script src="app.js"></script>
 </body>
