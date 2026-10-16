@@ -1,3 +1,114 @@
-node_modules/
-dist/
+
+# ==========================================
+# Système d'exploitation
+# ==========================================
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# IDE et éditeurs
+# ==========================================
+
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ==========================================
+# PHP / Composer
+# ==========================================
+
+/vendor/
+
+# Fichiers de configuration locaux
+.env.local
+.env.*.local
+
+# Fichiers de logs
+/var/log/
+*.log
+
+# Cache Symfony
+/var/cache/
+
+# Sessions PHP
+*.sess
+
+# ==========================================
+# Symfony
+# ==========================================
+
+/public/bundles/
+/public/assets/
+/.phpunit.cache/
+/.phpunit.result.cache
+
+# ==========================================
+# JavaScript / Node.js
+# ==========================================
+
+/node_modules/
+/npm-debug.log*
+/yarn-debug.log*
+/pnpm-debug.log*
+
+# Fichiers de build
+/dist/
+/build/
+
+# Cache des outils JS
+/.eslintcache
+/.stylelintcache
+/.parcel-cache/
+/.vite/
+
+# ==========================================
+# HTML / CSS / JavaScript
+# ==========================================
+
+# Fichiers minifiés générés (à adapter)
+/public/css/*.min.css
+/public/js/*.min.js
+
+# Source maps générées
+*.map
+
+# ==========================================
+# Fichiers temporaires et archives
+# ==========================================
+
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
 *.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# ==========================================
+# Tests et couverture
+# ==========================================
+
+/coverage/
+/.phpunit.cache/
+
+# ==========================================
+# Secrets et fichiers locaux
+# ==========================================
+
+.env.local
+.env.*.local
+auth.json
+
+# ==========================================
+# Fichiers de logs supplémentaires
+# ==========================================
+
+npm-debug.log*
+yarn-error.log*
