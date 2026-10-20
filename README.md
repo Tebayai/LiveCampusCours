@@ -30,9 +30,3 @@ Un exercice contient en général :
 - `index.html`, `style.css` et/ou `app.js` : le code de l'exercice
 - `design/` : les maquettes à reproduire (pour les intégrations)
 - `images/` : les ressources graphiques
-
-## Lancer un exercice
-
-Pas d'installation nécessaire pour la partie HTML / CSS / JS : il suffit d'ouvrir le fichier `index.html` dans un navigateur, ou d'utiliser l'extension **Live Server** de VS Code.
-
-Les exercices qui utilisent une API (`JS/API/`) ont besoin d'une connexion Internet.
