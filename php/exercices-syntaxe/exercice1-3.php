@@ -14,3 +14,10 @@ $element3 = "Et des tas de bonnes choses";
 //      <li>Des épices</li>
 //      <li>Et des tas de bonnes choses</li>
 //  </ul>
+
+echo "<h1>$titre</h1>";
+echo "<ul>";
+echo "<li>$element1</li>";
+echo "<li>$element2</li>";
+echo "<li>$element3</li>";
+echo "</ul>";
