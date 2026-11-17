@@ -19,3 +19,7 @@ $tableauTextes = [
 // <p style="color: red">Force rouge !</p>
 // <p style="color: blue">Force bleue !</p>
 // <p style="color: green">Force verte !</p>
+
+foreach($tableauTextes as $couleur => $texte){
+    echo("<p style=\"color: $couleur\">$texte</p>\n");
+}
