@@ -16,3 +16,9 @@ $mettreCouleur = true;
 // <p>Mon texte</p>
 // Vérifiez que votre code se comporte comme prévu en changeant les valeurs
 // des variables $couleur et $texte
+
+if($mettreCouleur){
+    echo("<p style=\"color: $couleur\">$texte</p>");
+}else{
+    echo("<p>$texte</p>");
+}
