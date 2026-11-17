@@ -22,3 +22,11 @@ $visage = [
 // Créez une autre boucle (foreach) pour afficher le rendu suivant :
 // sourcils:froncés cheveux:courts yeux:bleus taille:1m60
 // -> Pour rappel : foreach($tableau as $clef => $valeur)
+
+foreach($visage as $elements){
+    echo("$elements ");
+}
+
+foreach($visage as $key => $elements){
+    echo("$key:$elements ");
+}
