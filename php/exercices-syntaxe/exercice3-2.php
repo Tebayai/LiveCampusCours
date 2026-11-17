@@ -5,3 +5,7 @@
 // un espace séparant les différents chiffres.
 // Rendu attendu : 10 11 12 13 14 15 
 // -> Pour rappel : for($i = 0; $i < 10; $i++)
+
+for($i = 10; $i < 16; $i++){
+    echo("$i ");
+}
