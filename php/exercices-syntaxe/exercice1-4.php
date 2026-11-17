@@ -14,3 +14,9 @@ $contenu2 = "<p>Mes loisirs</p>";
 //  <p><strong>Ma Grande Ecole</strong> : Formation en informatique</p>
 //  <h2>Loisirs</h2>
 //  <p>Mes loisirs</p>
+
+echo "<h1>$titre</h1>";
+echo "<h2>$soustitre1</h2>";
+echo "$contenu1";
+echo "<h2>$soustitre2</h2>";
+echo "$contenu2";
