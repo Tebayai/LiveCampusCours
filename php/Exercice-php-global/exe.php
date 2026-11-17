@@ -86,6 +86,15 @@ for ($i = 1; $i <= 9; $i++){
     echo("\n");
 }
 
+//N affichage 1 12 123 ...
+$n = input("Entrez un entier N :");
+for ($i = 1; $i <= $n; $i++){
+    for ($j = 1; $j <= $i; $j++){
+        echo($j);
+    }
+    echo("\n");
+}
+
 //Algo 10 notes dans un tableau ensuite demander l'index de la note
 $notes = [];
 for ($i = 0; $i < 10; $i++) {
