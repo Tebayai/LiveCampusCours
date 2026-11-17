@@ -21,3 +21,7 @@ $tableauTextes = [
 // <p>Paragraphe 3 : Moi ça va</p>
 // <p>Paragraphe 4 : Je n'ai toujours pas d'inspiration</p>
 // -> Pour rappel : foreach($tableau as $valeur)
+
+foreach($tableauTextes as $texte){
+    echo("<p>$texte</p>\n");
+}
