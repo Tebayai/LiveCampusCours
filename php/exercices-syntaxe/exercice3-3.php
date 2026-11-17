@@ -14,3 +14,11 @@ $tableauPrenoms = ["Bob", "Alice", "James", "Louise"];
 // Rendu attendu : Bob Alice James Louise
 // -> Pour rappel : for($i = 0; $i < count($tableau); $i++)
 // -> Pour rappel : foreach($tableau as $valeur)
+
+foreach($tableauPrenoms as $prenom){
+    echo("$prenom \n");
+}
+
+for($i = 0; $i < count($tableauPrenoms); $i++){
+    echo("$tableauPrenoms[$i] ");
+}
