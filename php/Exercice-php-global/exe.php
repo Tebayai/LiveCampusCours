@@ -1,6 +1,9 @@
 <?php
 require_once 'fonctions.php';
 
+
+
+
 //Echange les valeurs de deux variables
 $a = input("a :");
 $b = input("b :");
@@ -50,6 +53,37 @@ if ($n >= 1 && $n <= 9) {
     }
 } else {
     echo("Nombre invalide\n");
+}
+
+//Somme nb 1 a entier x
+$n = input("Entre entier ");
+$rez = 0;
+for ($i = 1; $i <= $n; $i++){
+    $rez += $i;
+}
+echo("$rez\n");
+
+//FizzBuzz
+for ($i = 1; $i < 100; $i++){
+    if ($i %3 == 0){
+        echo("Fizz ");
+    }else if($i %5 == 0){
+        echo("Buzz ");
+    }else if($i %15 == 0){
+        echo("FizzBuzz ");
+    }else if($i %10 == 9){
+        echo("$i Bonus ");
+    }else{
+        echo("$i ");
+    }
+}
+
+//Afficher les tables de multiplication de 1 à 9
+for ($i = 1; $i <= 9; $i++){
+    for ($j = 1; $j <= 10; $j++){
+        echo("$i * $j = " . ($i * $j) . " ");
+    }
+    echo("\n");
 }
 
 //Algo 10 notes dans un tableau ensuite demander l'index de la note
