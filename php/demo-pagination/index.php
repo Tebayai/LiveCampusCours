@@ -63,8 +63,22 @@ $articles = [
 
 ];
 
-$numeroPage = filter_input(INPUT_GET, 'page');
 $nombreArticlesParPage = 5;
+
+$numeroPageMax = ceil(count($articles) / $nombreArticlesParPage);
+$numeroPage = filter_input(INPUT_GET, 'page');
+if (!$numeroPage || $numeroPage < 1) {
+    http_response_code(303);
+    header('Location: http://localhost:8000/index.php?page=1');
+    exit();
+}
+
+if($numeroPage > $numeroPageMax) {
+    http_response_code(303);
+    header('Location: http://localhost:8000/index.php?page=' . $numeroPageMax);
+    exit();
+}
+
 
 $articleMini = ($numeroPage - 1) * $nombreArticlesParPage;
 $articleMax = $articleMini + $nombreArticlesParPage;
@@ -80,14 +94,21 @@ $articleMax = $articleMini + $nombreArticlesParPage;
 </head>
 <body>
     <h1>Liste des articles</h1>
+    <em>Page <?= $numeroPage ?></em>
 
-        <?php for($i = $articleMini; $i < $articleMax; $i++): ?>
-        <?php $article = $articles[$i]; ?>
-            <article>
-                <h2><?= $article['titre'] ?></h2>
-                <p><?= $article['contenu'] ?></p>
-                <small>Créé le <?= $article['date-creation'] ?></small>
-            </article>
+    <nav>
+        <?php for($i = 1; $i < $numeroPageMax; $i++): ?>
+            <a href="index.php?page=<?= $i ?>"> Page <?= $i ?></a>
         <?php endfor; ?>
+    </nav>
+
+    <?php for($i = $articleMini; $i < $articleMax; $i++): ?>
+    <?php $article = $articles[$i]; ?>
+        <article>
+            <h2><?= $article['titre'] ?></h2>
+            <p><?= $article['contenu'] ?></p>
+            <small>Créé le <?= $article['date-creation'] ?></small>
+        </article>
+    <?php endfor; ?>
 </body>
 </html>
