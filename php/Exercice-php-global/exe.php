@@ -123,4 +123,24 @@ if (in_array($matiere, $matieres) && $index >= 0 && $index < 10) {
 } else {
     echo("Matière ou index invalide\n");
 }
+
+function animal($nomAnimal){
+    if($nomAnimal == "chat"){
+        echo("miaulement\n");
+    } elseif($nomAnimal == "chien"){
+        echo("aboiement\n");
+    } else {
+        echo("Animal inconnu\n");
+    }
+}
+
+//factoriel d'un nb
+$fact = input("Entrez un entier pour calculer sa factorielle :");
+function factorielle($fact){
+    $result = 1;
+    for ($i = 1; $i <= $fact; $i++){
+        $result *= $i;
+    }
+    return $result;
+}
 ?>
