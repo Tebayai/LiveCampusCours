@@ -22,6 +22,14 @@ var_dump($res);
 }
  */
 
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+    if()
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +44,14 @@ var_dump($res);
     <div class="bg-white p-4">
         <h2>Connexion</h2>
 
-        <form>
-            <label for="email" ></label>
-            <input>
+        <form action="" method="post">
+            <label for="id">Identifiant :</label>
+            <input type="text" id="id" name="id">
+
+            <label for="password">Mot de passe :</label>
+            <input type="text" id="password" name="password">
+
+            <button type="submit">Se connecter</button>
         </form>
     </div>
 </body>
