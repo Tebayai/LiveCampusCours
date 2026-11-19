@@ -21,11 +21,11 @@ executerRequete('voir-responses-par-ticket', ['ticket' => 1])
 var_dump($res);
 }
  */
+$error = '';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_input(INPUT_POST, 'password');
-    $error = '';
 
     $compte = executerRequete('recuperer-compte-par-identifiant', ['identifiant' => $id]);
     /* var_dump($compte); */
@@ -40,38 +40,33 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 header('Location: board/devBoard.php');
                 exit;
             }else{
-                header('Location: board/UserBoard.php');
+                header('Location: board/userBoard.php');
                 exit;
             }
         }
     }
 }
 
+//import header
+$titre = 'Tickets YEG.org';
+require_once 'partiel/header.php'; 
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tickets YEG.org</title>
-</head>
-<body>
-    <h1>Gestion des tickets YEG inc</h1>
-    <div class="bg-white p-4">
-        <h2>Connexion</h2>
+<h1>Gestion des tickets YEG inc</h1>
+<div class="bg-white p-4">
+    <h2>Connexion</h2>
 
-        <form action="" method="post">
-            <label for="id">Identifiant :</label>
-            <input type="text" id="id" name="id">
+    <form action="" method="post">
+        <label for="id">Identifiant :</label>
+        <input type="text" id="id" name="id">
 
-            <label for="password">Mot de passe :</label>
-            <input type="text" id="password" name="password">
+        <label for="password">Mot de passe :</label>
+        <input type="text" id="password" name="password">
 
-            <button type="submit">Se connecter</button>
-        </form>
-        <?php if($error !== ''):?> <p><?= $error ?></p> <?php endif; ?>
-    </div>
-</body>
-</html>
+        <button type="submit">Se connecter</button>
+    </form>
+    <?php if($error !== ''):?> <p><?= $error ?></p> <?php endif; ?>
+</div>
+
+<?php require_once 'partiel/footer.php'; ?>
