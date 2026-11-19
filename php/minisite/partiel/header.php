@@ -10,3 +10,13 @@
     <?php endforeach; ?>
 </head>
 <body>
+<nav>
+    <a href="index.php">Accueil</a>
+    <a href="a-propos.php">A propos</a>
+    <a href="pseudo.php">Pseudo</a>
+
+    <?php if(isset($_SESSION['pseudo'])): ?>
+        <a href="tchat.php">Discussion</a>
+        <span>Bonjour, <?= $_SESSION['pseudo'] ?></span>
+    <?php endif; ?>
+</nav>

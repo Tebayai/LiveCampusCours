@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Ceci est un exemple d'organisation, on peut tout
 // à fait faire autrement.
@@ -36,6 +37,28 @@ function accueil() {
 
 function aPropos() {
     $titre = 'A propos de nous';
+    $css = [
+        'global.css'
+    ];
+    return [
+        $titre,
+        $css
+    ];
+}
+
+function pseudo() {
+    $titre = 'Choisir un pseudo';
+    $css = [
+        'global.css'
+    ];
+    return [
+        $titre,
+        $css
+    ];
+}
+
+function tchat() {
+    $titre = 'Discussion';
     $css = [
         'global.css'
     ];
