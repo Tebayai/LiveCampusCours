@@ -1,7 +1,7 @@
 <?php
 
-/* require_once('requestBDD.php');
-
+require_once('requestBDD.php');
+/* 
 foreach([
 executerRequete('recuperer-compte-par-identifiant', ['identifiant' => 'alice']),
 executerRequete('creer-ticket', ['compte' => 2, 'titre' => 'Test',
@@ -23,10 +23,28 @@ var_dump($res);
  */
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST, 'password');
+    $error = '';
 
-    if()
+    $compte = executerRequete('recuperer-compte-par-identifiant', ['identifiant' => $id]);
+    /* var_dump($compte); */
+
+    if ($compte == null){
+        $error = 'Identifiant incorrect';
+    }else{
+        if($compte['mot_de_passe'] !== $password){
+            $error = 'Mot de passe incorrect';
+        }else{
+            if($compte['role'] === 'dev'){
+                header('Location: board/devBoard.php');
+                exit;
+            }else{
+                header('Location: board/UserBoard.php');
+                exit;
+            }
+        }
+    }
 }
 
 
@@ -53,6 +71,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             <button type="submit">Se connecter</button>
         </form>
+        <?php if($error !== ''):?> <p><?= $error ?></p> <?php endif; ?>
     </div>
 </body>
 </html>

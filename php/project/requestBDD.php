@@ -25,12 +25,16 @@ function executerRequete(string $key, ?array $params = null)
     $pdo = new PDO('mysql:host=localhost;dbname=lc_tickets', USER_BDD, MDP_BDD);
     $stmt = $pdo->prepare($sql);
     $result = $stmt->execute($params);
+
     if (!str_starts_with($sql, 'SELECT')) {
         return $result;
     }
+
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     if (str_contains($sql, 'WHERE id')) {
         return empty($rows) ? null : $rows[0];
     }
+    
     return $rows;
 }
