@@ -1,16 +1,12 @@
 <?php
 // Code pour gérer le tableau de bord de l'utilisateur
+session_start();
+
+$titre = 'Tickets Utilisateur YEG inc';
+$css = [];
+require_once '../partiel/header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tickets Utilisateur YEG inc</title>
-</head>
-<body>
-    <h1>Tableau de bord de l'utilisateur</h1>
-    
-</body>
-</html>
+<h1>Tableau de bord de l'utilisateur</h1>
+
+<?php require_once '../partiel/footer.php'; ?>

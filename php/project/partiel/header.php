@@ -11,9 +11,10 @@
 </head>
 <body>
 <nav>
-    <a href="index.php">Accueil</a>
+    <a href="/index.php">Accueil</a>
 
     <?php if(isset($_SESSION['identifiant'])): ?>
-        <span>Bonjour, <?= $_SESSION['pseudo'] ?></span>
+        <span>Bonjour, <?= $_SESSION['identifiant'] ?></span>
+        <a href="/deconnexion.php">Déconnexion</a>
     <?php endif; ?>
 </nav>

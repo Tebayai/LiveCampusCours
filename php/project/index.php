@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once('requestBDD.php');
 /* 
@@ -36,6 +37,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if($compte['mot_de_passe'] !== $password){
             $error = 'Mot de passe incorrect';
         }else{
+            // On garde le compte en session pour les autres pages
+            $_SESSION['id'] = $compte['id'];
+            $_SESSION['identifiant'] = $compte['identifiant'];
+            $_SESSION['role'] = $compte['role'];
+
             if($compte['role'] === 'dev'){
                 header('Location: board/devBoard.php');
                 exit;
@@ -49,6 +55,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 //import header
 $titre = 'Tickets YEG.org';
+$css = [];
 require_once 'partiel/header.php'; 
 
 ?>
