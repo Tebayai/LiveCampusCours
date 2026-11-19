@@ -24,6 +24,7 @@ Desktop.ini
 vendor/
 
 # Fichiers de configuration locaux
+.env
 .env.local
 .env.*.local
 
@@ -102,6 +103,7 @@ node_modules/
 # Secrets et fichiers locaux
 # ==========================================
 
+.env
 .env.local
 .env.*.local
 auth.json
