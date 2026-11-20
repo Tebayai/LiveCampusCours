@@ -55,25 +55,31 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 //import header
 $titre = 'Tickets YEG.org';
-$css = [];
+$css = ['../css/style.css'];
 require_once 'partiel/header.php'; 
 
 ?>
 
-<h1>Gestion des tickets YEG inc</h1>
-<div class="bg-white p-4">
-    <h2>Connexion</h2>
+<div class="login-container">
+    <h1>Gestion des tickets YEG inc</h1>
+    <div class="login-infos">
+        <h2>Connexion</h2>
 
-    <form action="" method="post">
-        <label for="id">Identifiant :</label>
-        <input type="text" id="id" name="id">
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="id">Identifiant :</label>
+                <input type="text" id="id" name="id">
+            </div>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password">
+            <div class="form-group">
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password">
+            </div>
 
-        <button type="submit">Se connecter</button>
-    </form>
-    <?php if($error !== ''):?> <p><?= $error ?></p> <?php endif; ?>
+            <button type="submit">Se connecter</button>
+        </form>
+        <?php if($error !== ''):?> <p><?= $error ?></p> <?php endif; ?>
+    </div>
 </div>
 
 <?php require_once 'partiel/footer.php'; ?>

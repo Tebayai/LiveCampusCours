@@ -11,7 +11,7 @@ $id = $_SESSION['id'];
 $hist = executerRequete('voir-tickets-en-cours');
 
 $titre = 'Tickets dev YEG inc';
-$css = [];
+$css = ['../css/style.css'];
 require_once '../partiel/header.php';
 ?>
 
