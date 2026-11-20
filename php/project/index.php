@@ -43,10 +43,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $_SESSION['role'] = $compte['role'];
 
             if($compte['role'] === 'dev'){
-                header('Location: board/dashboard_usager.php');
+                header('Location: board/dashboard_dev.php');
                 exit;
             }else{
-                header('Location: board/dashboard_dev.php');
+                header('Location: board/dashboard_usager.php');
                 exit;
             }
         }
