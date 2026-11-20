@@ -19,8 +19,17 @@ body{
 nav{
     margin: 2rem;
     background-color: white;
-    padding: .8rem;
+    padding: .8rem 2rem;
     border-radius: 99999rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+
+    a{
+        text-decoration: none;
+        color: rgb(6, 65, 92);
+    }
 }
 
 .container-title {
@@ -60,6 +69,10 @@ nav{
                 display: flex;
                 align-items: center;
                 gap: .3rem;
+            }
+
+            label{
+                width: 100%;
             }
             
             input{
