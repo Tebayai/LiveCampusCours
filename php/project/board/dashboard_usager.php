@@ -19,11 +19,23 @@ require_once '../partiel/header.php';
 
 <?php if (isset($_SESSION['id']) && isset($hist)): ?>
     <h2>Historique des tickets</h2>
-    <ul>
-        <?php foreach ($hist as $ticket): ?>
-            <li><?php echo $ticket['titre']; ?> | <?php echo $ticket['statut'] ?> | <?php echo $ticket['date_creation']; ?> | <a href="/board/voir_ticket_usager.php?id=<?php echo $ticket['id']; ?>">Voir</a></li>
-        <?php endforeach; ?>
-    </ul>
+
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Statut</th>
+            <th>Date Création</th>
+        </tr>
+
+        <tr>
+            <?php foreach ($hist as $ticket): ?>
+                <td><?php echo $ticket['titre']; ?></td>
+                <td><?php echo $ticket['statut'] ?></td>
+                <td><?php echo $ticket['date_creation']; ?></td>
+                <td><a href="/board/voir_ticket_usager.php?id=<?php echo $ticket['id']; ?>">Voir</a></td>
+            <?php endforeach; ?>
+        </tr>
+    </table>
 <?php endif; ?>
 
 <?php require_once '../partiel/footer.php'; ?>
