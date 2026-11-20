@@ -37,6 +37,13 @@ require_once '../partiel/header.php';
 </table>
 
 <h3>Historique des messages échangés</h3>
+<?php if(!empty($voirReponses)): ?>
+    <?php foreach($voirReponses as $message): ?>
+        <span><?= $message['contenu'] ?? '' ?></span>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>Aucun message échangé.</p>
+<?php endif; ?>
 
 <?php if($voirTicket['statut'] == 'NOUVEAU' || $voirTicket['statut'] == 'NONRESOLU'):?>
     <h3>Changer status ticket</h3>

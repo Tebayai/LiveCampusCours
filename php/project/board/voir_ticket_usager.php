@@ -3,6 +3,7 @@ session_start();
 require_once('../requestBDD.php');
 
 $voirTicket = executerRequete('voir-ticket-par-id', ['ticket' => $_GET['id']]);
+$voirReponses = executerRequete('voir-responses-par-ticket', ['ticket' => $_GET['id']]);
 $button = filter_input(INPUT_POST, 'button', FILTER_SANITIZE_SPECIAL_CHARS);
 $non_resolu = filter_input(INPUT_POST, 'non_resolu', FILTER_SANITIZE_SPECIAL_CHARS);
 $date = (new DateTime('now', new DateTimeZone('Europe/Paris')))->format('Y-m-d H:i:s');
@@ -10,11 +11,11 @@ $date = (new DateTime('now', new DateTimeZone('Europe/Paris')))->format('Y-m-d H
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if($button == 'CLOS') {
         $statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'CLOS']);
-    }elseif($button == 'NONRESOLU'){
+    }elseif($button == 'NONRESOLU' && $voirTicket['statut'] == 'RESOLU'){
         $historique = executerRequete('creer-reponse', ['ticket' => $_GET['id'], 'compte' => $_SESSION['id'], 'contenu' => $non_resolu, 'date_creation' => $date]);
         $statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'NONRESOLU']);
     }
-    
+
     header('Location: voir_ticket_usager.php?id=' . $_GET['id']);
     exit;
 }
@@ -44,13 +45,15 @@ require_once '../partiel/header.php';
 </table>
 
 <h3>Historique des messages échangés</h3>
+<?php if(!empty($voirReponses)): ?>
+    <?php foreach($voirReponses as $message): ?>
+        <span><?= $message['contenu'] ?? '' ?></span>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>Aucun message échangé.</p>
+<?php endif; ?>
 
 <h3>Changer status ticket</h3>
-<?php if(isset($historique)): ?>
-    <?php foreach($hist as $historique): ?>
-        <span><?= $non_resolu ?></span>
-    <?php endforeach; ?>
-<?php endif; ?>
 
 <p>Fermer le ticket ?</p>
 <form method="post" action="">
@@ -61,7 +64,7 @@ require_once '../partiel/header.php';
 <?php if($voirTicket['statut'] == 'RESOLU'):?>
     <form method="post" action="">
         <label for="non_resolu">Description </label>
-        <textarea id="non_resolu" name="non_resolu"></textarea>
+        <textarea id="non_resolu" name="non_resolu" required></textarea>
 
         <button type="submit" name="button" value="NONRESOLU">NON RESOLU</button>
     </form>
