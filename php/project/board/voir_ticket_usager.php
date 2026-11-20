@@ -17,15 +17,15 @@ require_once '../partiel/header.php';
 <table>
     <tr>
         <th>Titre</th>
-        <th>Statut</th>
+        <th>Description</th>
         <th>Date Création</th>
+        <th>Statut</th>
     </tr>
     <tr>
         <td><?= $voirTicket['titre'] ?? '' ?></td>
         <td><?= $voirTicket['description'] ?? '' ?></td>
         <td><?= $voirTicket['date_creation'] ?? '' ?></td>
         <td><?= $voirTicket['statut'] ?? '' ?></td>
-        <td><?= $voirTicket['compte_id'] ?? '' ?></td>
     </tr>
 </table>
 

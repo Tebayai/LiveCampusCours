@@ -21,12 +21,14 @@ require_once '../partiel/header.php';
         <th>Description</th>
         <th>Date Création</th>
         <th>Statut</th>
+        <th>Compte ID</th>
     </tr>
     <tr>
         <td><?= $voirTicket['titre'] ?? '' ?> | </td>
         <td><?= $voirTicket['description'] ?? '' ?> | </td>
         <td><?= $voirTicket['date_creation'] ?? '' ?> | </td>
         <td><?= $voirTicket['statut'] ?? '' ?> | </td>
+        <td><?= $voirTicket['compte_id'] ?? '' ?></td>
     </tr>
 </table>
 
