@@ -13,7 +13,7 @@ require_once '../partiel/header.php';
 <div class="container-title">
     <h1>Tableau de bord Utilisateur</h1>
     <?php if (isset($_SESSION['id'])): ?>
-        <a href="/create-ticket.php">Créer un ticket</a>
+        <a href="/board/create-ticket.php">Créer un ticket</a>
     <?php endif; ?>
 </div>
 
