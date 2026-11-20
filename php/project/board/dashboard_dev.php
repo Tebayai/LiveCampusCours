@@ -1,5 +1,4 @@
 <?php
-// Code pour gérer le tableau de bord de l'utilisateur
 session_start();
 require_once('../requestBDD.php');
 
