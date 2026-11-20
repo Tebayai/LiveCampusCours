@@ -14,11 +14,19 @@ require_once '../partiel/header.php';
 
 <?php if (isset($_SESSION['id']) && isset($hist)): ?>
     <h3>Tickets en cours</h3>
-    <ul>
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Statut</th>
+        </tr>
+
         <?php foreach ($hist as $ticket): ?>
-            <li><?php echo $ticket['titre']; ?> | <?php echo $ticket['statut']; ?></li>
+            <tr>
+                <td><?php echo $ticket['titre']; ?></td>
+                <td><?php echo $ticket['statut']; ?></td>
+            </tr>
         <?php endforeach; ?>
-    </ul>
+    </table>
 <?php endif; ?>
 
 <?php require_once '../partiel/footer.php'; ?>
