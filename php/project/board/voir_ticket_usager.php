@@ -47,7 +47,7 @@ require_once '../partiel/header.php';
 <h3>Historique des messages échangés</h3>
 <?php if(!empty($voirReponses)): ?>
     <?php foreach($voirReponses as $message): ?>
-        <span><?= $message['contenu'] ?? '' ?></span>
+        <p><?= $message['date_creation'] ?? '' ?> : <?= $message['contenu'] ?? '' ?></p>
     <?php endforeach; ?>
 <?php else: ?>
     <p>Aucun message échangé.</p>
