@@ -4,9 +4,15 @@ require_once('../requestBDD.php');
 
 $voirTicket = executerRequete('voir-ticket-par-id', ['ticket' => $_GET['id']]);
 $voirReponses = executerRequete('voir-responses-par-ticket', ['ticket' => $_GET['id']]);
+$resolu = filter_input(INPUT_POST, 'resolu', FILTER_SANITIZE_SPECIAL_CHARS);
+$date = (new DateTime('now', new DateTimeZone('Europe/Paris')))->format('Y-m-d H:i:s');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'RESOLU']);
+    if($voirTicket['statut'] == 'NOUVEAU' || $voirTicket['statut'] == 'NONRESOLU'){
+        $historique = executerRequete('creer-reponse', ['ticket' => $_GET['id'], 'compte' => $_SESSION['id'], 'contenu' => $resolu, 'date_creation' => $date]);
+        $statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'RESOLU']);
+    }
+
     header('Location: voir_ticket_dev.php?id=' . $_GET['id']);
     exit;
 }
@@ -41,7 +47,7 @@ require_once '../partiel/header.php';
 <h3>Historique des messages échangés</h3>
 <?php if(!empty($voirReponses)): ?>
     <?php foreach($voirReponses as $message): ?>
-        <span><?= $message['contenu'] ?? '' ?></span>
+        <p><?= $message['date_creation'] ?? '' ?> : <?= $message['contenu'] ?? '' ?></p>
     <?php endforeach; ?>
 <?php else: ?>
     <p>Aucun message échangé.</p>
@@ -50,6 +56,9 @@ require_once '../partiel/header.php';
 <?php if($voirTicket['statut'] == 'NOUVEAU' || $voirTicket['statut'] == 'NONRESOLU'):?>
     <h3>Changer status ticket</h3>
     <form method="post" action="">
+        <label for="resolu">Réponse </label>
+        <textarea id="resolu" name="resolu" required></textarea>
+
         <button type="submit">RESOLU</button>
     </form>
 <?php endif; ?>
