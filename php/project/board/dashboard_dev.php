@@ -17,12 +17,14 @@ require_once '../partiel/header.php';
     <table>
         <tr>
             <th>Titre</th>
+            <th>Date Création</th>
             <th>Statut</th>
         </tr>
 
         <?php foreach ($hist as $ticket): ?>
             <tr>
                 <td><?php echo $ticket['titre']; ?></td>
+                <td><?php echo $ticket['date_creation']; ?></td>
                 <td><?php echo $ticket['statut']; ?></td>
                 <td><a href="/board/voir_ticket_dev.php?id=<?php echo $ticket['id']; ?>">Voir</a></td>
             </tr>

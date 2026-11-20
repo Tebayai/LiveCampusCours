@@ -69,7 +69,7 @@ require_once 'partiel/header.php';
         <input type="text" id="id" name="id">
 
         <label for="password">Mot de passe :</label>
-        <input type="text" id="password" name="password">
+        <input type="password" id="password" name="password">
 
         <button type="submit">Se connecter</button>
     </form>

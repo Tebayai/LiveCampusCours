@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-$titre = 'Creation Tickets';
+$titre = 'Ticket usager';
 $css = ['../css/style.css'];
 require_once '../partiel/header.php';
 ?>
