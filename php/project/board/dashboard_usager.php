@@ -27,14 +27,15 @@ require_once '../partiel/header.php';
             <th>Date Création</th>
         </tr>
 
-        <tr>
-            <?php foreach ($hist as $ticket): ?>
+
+        <?php foreach ($hist as $ticket): ?>
+            <tr>
                 <td><?php echo $ticket['titre']; ?></td>
                 <td><?php echo $ticket['statut'] ?></td>
                 <td><?php echo $ticket['date_creation']; ?></td>
                 <td><a href="/board/voir_ticket_usager.php?id=<?php echo $ticket['id']; ?>">Voir</a></td>
-            <?php endforeach; ?>
-        </tr>
+            </tr>
+        <?php endforeach; ?>
     </table>
 <?php endif; ?>
 

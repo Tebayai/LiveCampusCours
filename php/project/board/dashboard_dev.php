@@ -3,7 +3,7 @@ session_start();
 require_once('../requestBDD.php');
 
 $id = $_SESSION['id'];
-$hist = executerRequete('voir-tickets-par-compte', ['compte' => $id]);
+$hist = executerRequete('voir-tickets-en-cours');
 
 $titre = 'Tickets dev YEG inc';
 $css = [];

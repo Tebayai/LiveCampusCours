@@ -22,10 +22,16 @@ require_once '../partiel/header.php';
     </tr>
     <tr>
         <td><?= $voirTicket['titre'] ?? '' ?></td>
-        <td><?= $voirTicket['statut'] ?? '' ?></td>
+        <td><?= $voirTicket['description'] ?? '' ?></td>
         <td><?= $voirTicket['date_creation'] ?? '' ?></td>
+        <td><?= $voirTicket['statut'] ?? '' ?></td>
+        <td><?= $voirTicket['compte_id'] ?? '' ?></td>
     </tr>
 </table>
+
+<h3>Historique des messages échangés</h3>
+
+
 
 
 <?php require_once '../partiel/footer.php'; ?>
