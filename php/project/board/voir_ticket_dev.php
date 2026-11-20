@@ -32,9 +32,8 @@ require_once '../partiel/header.php';
 
 <h3>Historique des messages échangés</h3>
 
-<h3>Changer status ticket</h3>
-
-<?php if($voirTicket['statut'] == 'NOUVEAU' || $voirTicket['statut'] == 'OUVERT'):?>
+<?php if($voirTicket['statut'] == 'NOUVEAU' || $voirTicket['statut'] == 'NON RESOLU'):?>
+    <h3>Changer status ticket</h3>
     <button type="submit">RESOLU</button>
 <?php endif; ?>
 
