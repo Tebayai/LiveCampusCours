@@ -59,6 +59,73 @@ nav{
     }
 }
 
+/*****************/
+/*    tableaux   */
+/*****************/
+table{
+    width: 100%;
+    border-spacing: 0;
+    margin: 1rem 0;
+
+    tr:has(th){
+        display: none;
+    }
+
+    tr{
+        display: block;
+        background-color: white;
+        border-radius: 1rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    td{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: .3rem 0;
+    }
+
+    td::before{
+        content: attr(data-label);
+        font-weight: 600;
+    }
+
+    a{
+        color: rgb(6, 65, 92);
+        font-weight: 600;
+    }
+
+    @media (min-width: 768px) {
+        background-color: white;
+        border-radius: 1rem;
+        overflow: hidden;
+
+        tr, tr:has(th){
+            display: table-row;
+        }
+
+        th, td{
+            display: table-cell;
+            padding: .8rem 1rem;
+            text-align: left;
+        }
+
+        td::before{
+            content: none;
+        }
+
+        th{
+            background-color: rgb(6, 65, 92);
+            color: white;
+        }
+
+        tr:nth-child(odd) td{
+            background-color: #f3f8f8;
+        }
+    }
+}
+
 .login-container{
     display: flex;
     gap: 1rem;

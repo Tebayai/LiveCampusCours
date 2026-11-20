@@ -42,10 +42,10 @@ require_once '../partiel/header.php';
         <th>Statut</th>
     </tr>
     <tr>
-        <td><?= $voirTicket['titre'] ?? '' ?></td>
-        <td><?= $voirTicket['description'] ?? '' ?></td>
-        <td><?= $voirTicket['date_creation'] ?? '' ?></td>
-        <td><?= $voirTicket['statut'] ?? '' ?></td>
+        <td data-label="Titre"><?= $voirTicket['titre'] ?? '' ?></td>
+        <td data-label="Description"><?= $voirTicket['description'] ?? '' ?></td>
+        <td data-label="Date de création"><?= $voirTicket['date_creation'] ?? '' ?></td>
+        <td data-label="Statut"><?= $voirTicket['statut'] ?? '' ?></td>
     </tr>
 </table>
 

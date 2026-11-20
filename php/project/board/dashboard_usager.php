@@ -36,10 +36,10 @@ require_once '../partiel/header.php';
 
             <?php foreach ($hist as $ticket): ?>
                 <tr>
-                    <td><?php echo $ticket['titre']; ?></td>
-                    <td><?php echo $ticket['statut'] ?></td>
-                    <td><?php echo $ticket['date_creation']; ?></td>
-                    <td><a href="/board/voir_ticket_usager.php?id=<?php echo $ticket['id']; ?>">Voir</a></td>
+                    <td data-label="Titre"><?php echo $ticket['titre']; ?></td>
+                    <td data-label="Statut"><?php echo $ticket['statut'] ?></td>
+                    <td data-label="Date de création"><?php echo $ticket['date_creation']; ?></td>
+                    <td><a href="/board/voir_ticket_usager.php?id=<?php echo $ticket['id']; ?>">Voir le ticket</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
