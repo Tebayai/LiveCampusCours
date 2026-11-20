@@ -30,49 +30,50 @@ $css = ['../css/style.css'];
 require_once '../partiel/header.php';
 ?>
 
-<h1> Ticket : <?= $_GET['id'] ?? '' ?></h1>
+<div class="global-container"> 
+    <h1> Ticket : <?= $_GET['id'] ?? '' ?></h1>
 
-<h3>Information ticket : </h3>
+    <h3>Information ticket : </h3>
 
-<table>
-    <tr>
-        <th>Titre</th>
-        <th>Description</th>
-        <th>Date Création</th>
-        <th>Statut</th>
-    </tr>
-    <tr>
-        <td data-label="Titre"><?= $voirTicket['titre'] ?? '' ?></td>
-        <td data-label="Description"><?= $voirTicket['description'] ?? '' ?></td>
-        <td data-label="Date de création"><?= $voirTicket['date_creation'] ?? '' ?></td>
-        <td data-label="Statut"><?= $voirTicket['statut'] ?? '' ?></td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Date Création</th>
+            <th>Statut</th>
+        </tr>
+        <tr>
+            <td data-label="Titre"><?= $voirTicket['titre'] ?? '' ?></td>
+            <td data-label="Description"><?= $voirTicket['description'] ?? '' ?></td>
+            <td data-label="Date de création"><?= $voirTicket['date_creation'] ?? '' ?></td>
+            <td data-label="Statut"><?= $voirTicket['statut'] ?? '' ?></td>
+        </tr>
+    </table>
 
-<h3>Historique des messages échangés</h3>
-<?php if(!empty($voirReponses)): ?>
-    <?php foreach($voirReponses as $message): ?>
-        <p><?= $message['date_creation'] ?? '' ?> : <?= $message['contenu'] ?? '' ?></p>
-    <?php endforeach; ?>
-<?php else: ?>
-    <p>Aucun message échangé.</p>
-<?php endif; ?>
+    <h3>Historique des messages échangés</h3>
+    <?php if(!empty($voirReponses)): ?>
+        <?php foreach($voirReponses as $message): ?>
+            <p><?= $message['date_creation'] ?? '' ?> : <?= $message['contenu'] ?? '' ?></p>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>Aucun message échangé.</p>
+    <?php endif; ?>
 
-<h3>Changer status ticket</h3>
+    <h3>Changer status ticket</h3>
 
-<p>Fermer le ticket ?</p>
-<form method="post" action="">
-    <button type="submit" name="button" value="CLOS">CLOS</button>
-</form>
-
-<p>Renvoyer une demande de modification</p>
-<?php if($voirTicket['statut'] == 'RESOLU'):?>
+    <p>Fermer le ticket ?</p>
     <form method="post" action="">
-        <label for="non_resolu">Description </label>
-        <textarea id="non_resolu" name="non_resolu" required></textarea>
-
-        <button type="submit" name="button" value="NONRESOLU">NON RESOLU</button>
+        <button type="submit" name="button" value="CLOS">CLOS</button>
     </form>
-<?php endif; ?>
 
+    <p>Renvoyer une demande de modification</p>
+    <?php if($voirTicket['statut'] == 'RESOLU'):?>
+        <form method="post" action="">
+            <label for="non_resolu">Description </label>
+            <textarea id="non_resolu" name="non_resolu" required></textarea>
+
+            <button type="submit" name="button" value="NONRESOLU">NON RESOLU</button>
+        </form>
+    <?php endif; ?>
+</div>
 <?php require_once '../partiel/footer.php'; ?>

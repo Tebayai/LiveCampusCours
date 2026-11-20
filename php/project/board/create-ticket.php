@@ -23,18 +23,20 @@ $titre = 'Creation Tickets';
 $css = ['../css/style.css'];
 require_once '../partiel/header.php';
 ?>
-<h1>Creation d'un ticket</h1>
 
-<form action="create-ticket.php" method="post">
+<div class="global-container"> 
+    <h1>Creation d'un ticket</h1>
 
-    <label for="titre">Titre :</label>
-    <input type="text" id="titre" name="titre" required>
+    <form action="create-ticket.php" method="post">
 
-    <label for="description">Description :</label>
-    <textarea id="description" name="description" required></textarea>
+        <label for="titre">Titre :</label>
+        <input type="text" id="titre" name="titre" required>
 
-    <button type="submit">Créer le ticket</button>
-</form>
+        <label for="description">Description :</label>
+        <textarea id="description" name="description" required></textarea>
 
+        <button type="submit">Créer le ticket</button>
+    </form>
+</div>
 
 <?php require_once '../partiel/footer.php'; ?>

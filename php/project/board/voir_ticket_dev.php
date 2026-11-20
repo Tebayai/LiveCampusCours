@@ -28,47 +28,46 @@ $css = ['../css/style.css'];
 require_once '../partiel/header.php';
 ?>
 
-<h1> Ticket : <?= $_GET['id'] ?? '' ?></h1>
+<div class="global-container"> 
+    <h1> Ticket : <?= $_GET['id'] ?? '' ?></h1>
 
-<h3>Information ticket : </h3>
+    <h3>Information ticket : </h3>
 
-<table>
-    <tr>
-        <th>Titre</th>
-        <th>Description</th>
-        <th>Date Création</th>
-        <th>Statut</th>
-        <th>Compte ID</th>
-    </tr>
-    <tr>
-        <td data-label="Titre"><?= $voirTicket['titre'] ?? '' ?></td>
-        <td data-label="Description"><?= $voirTicket['description'] ?? '' ?></td>
-        <td data-label="Date de création"><?= $voirTicket['date_creation'] ?? '' ?></td>
-        <td data-label="Statut"><?= $voirTicket['statut'] ?? '' ?></td>
-        <td data-label="Compte ID"><?= $voirTicket['compte_id'] ?? '' ?></td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Date Création</th>
+            <th>Statut</th>
+            <th>Compte ID</th>
+        </tr>
+        <tr>
+            <td data-label="Titre"><?= $voirTicket['titre'] ?? '' ?></td>
+            <td data-label="Description"><?= $voirTicket['description'] ?? '' ?></td>
+            <td data-label="Date de création"><?= $voirTicket['date_creation'] ?? '' ?></td>
+            <td data-label="Statut"><?= $voirTicket['statut'] ?? '' ?></td>
+            <td data-label="Compte ID"><?= $voirTicket['compte_id'] ?? '' ?></td>
+        </tr>
+    </table>
 
-<h3>Historique des messages échangés</h3>
-<?php if(!empty($voirReponses)): ?>
-    <?php foreach($voirReponses as $message): ?>
-        <p><?= $message['date_creation'] ?? '' ?> : <?= $message['contenu'] ?? '' ?></p>
-    <?php endforeach; ?>
-<?php else: ?>
-    <p>Aucun message échangé.</p>
-<?php endif; ?>
+    <h3>Historique des messages échangés</h3>
+    <?php if(!empty($voirReponses)): ?>
+        <?php foreach($voirReponses as $message): ?>
+            <p><?= $message['date_creation'] ?? '' ?> : <?= $message['contenu'] ?? '' ?></p>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>Aucun message échangé.</p>
+    <?php endif; ?>
 
-<?php if($voirTicket['statut'] == 'NOUVEAU' || $voirTicket['statut'] == 'NONRESOLU'):?>
-    <h3>Changer status ticket</h3>
-    <form method="post" action="">
-        <label for="resolu">Réponse </label>
-        <textarea id="resolu" name="resolu" required></textarea>
+    <?php if($voirTicket['statut'] == 'NOUVEAU' || $voirTicket['statut'] == 'NONRESOLU'):?>
+        <h3>Changer status ticket</h3>
+        <form method="post" action="">
+            <label for="resolu">Réponse </label>
+            <textarea id="resolu" name="resolu" required></textarea>
 
-        <button type="submit">RESOLU</button>
-    </form>
-<?php endif; ?>
-
-
-
+            <button type="submit">RESOLU</button>
+        </form>
+    <?php endif; ?>
+</div>
 
 <?php require_once '../partiel/footer.php'; ?>
