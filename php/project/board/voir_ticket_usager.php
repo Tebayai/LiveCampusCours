@@ -3,18 +3,18 @@ session_start();
 require_once('../requestBDD.php');
 
 $voirTicket = executerRequete('voir-ticket-par-id', ['ticket' => $_GET['id']]);
-$non_resolu = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
+$button = filter_input(INPUT_POST, 'button', FILTER_SANITIZE_SPECIAL_CHARS);
+$non_resolu = filter_input(INPUT_POST, 'non_resolu', FILTER_SANITIZE_SPECIAL_CHARS);
 $date = (new DateTime('now', new DateTimeZone('Europe/Paris')))->format('Y-m-d H:i:s');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if($voirTicket['statut'] != 'CLOS') {
+    if($button == 'CLOS') {
         $statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'CLOS']);
-    }elseif($voirTicket['statut'] == 'RESOLU'){
-        $historique = executerRequete('creer-reponse', ['ticket' => $_GET['id'], 'compte' => $_SESSION['compte_id'], 'contenu' => $non_resolu, 'date_creation' => $date]);
-        $statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'RESOLU']);
-    }else{
-        $error = 'Impossible de changer le statut du ticket';
+    }elseif($button == 'NONRESOLU'){
+        $historique = executerRequete('creer-reponse', ['ticket' => $_GET['id'], 'compte' => $_SESSION['id'], 'contenu' => $non_resolu, 'date_creation' => $date]);
+        $statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'NONRESOLU']);
     }
+    
     header('Location: voir_ticket_usager.php?id=' . $_GET['id']);
     exit;
 }
@@ -54,7 +54,7 @@ require_once '../partiel/header.php';
 
 <p>Fermer le ticket ?</p>
 <form method="post" action="">
-    <button type="submit">CLOS</button>
+    <button type="submit" name="button" value="CLOS">CLOS</button>
 </form>
 
 <p>Renvoyer une demande de modification</p>
@@ -63,15 +63,8 @@ require_once '../partiel/header.php';
         <label for="non_resolu">Description </label>
         <textarea id="non_resolu" name="non_resolu"></textarea>
 
-        <button type="submit">NON RESOLU</button>
+        <button type="submit" name="button" value="NONRESOLU">NON RESOLU</button>
     </form>
 <?php endif; ?>
-
-<?php if(isset($error)): ?>
-    <p><?= $error ?></p>
-<?php endif; ?>
-
-
-
 
 <?php require_once '../partiel/footer.php'; ?>
