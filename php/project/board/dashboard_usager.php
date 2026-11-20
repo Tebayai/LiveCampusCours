@@ -2,6 +2,11 @@
 session_start();
 require_once('../requestBDD.php');
 
+if(!isset($_SESSION['id']) || $_SESSION['role'] !== 'usager'){
+    header('Location: /index.php');
+    exit;
+}
+
 $id = $_SESSION['id'];
 $hist = executerRequete('voir-tickets-par-compte', ['compte' => $id]);
 

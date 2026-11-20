@@ -2,6 +2,11 @@
 session_start();
 require_once('../requestBDD.php');
 
+if(!isset($_SESSION['id']) || $_SESSION['role'] !== 'dev'){
+    header('Location: /index.php');
+    exit;
+}
+
 $id = $_SESSION['id'];
 $hist = executerRequete('voir-tickets-en-cours');
 

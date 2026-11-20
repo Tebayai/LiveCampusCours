@@ -2,6 +2,11 @@
 session_start();
 require_once('../requestBDD.php');
 
+if(!isset($_SESSION['id']) || $_SESSION['role'] !== 'usager'){
+    header('Location: /index.php');
+    exit;
+}
+
 $voirTicket = executerRequete('voir-ticket-par-id', ['ticket' => $_GET['id']]);
 $voirReponses = executerRequete('voir-responses-par-ticket', ['ticket' => $_GET['id']]);
 $button = filter_input(INPUT_POST, 'button', FILTER_SANITIZE_SPECIAL_CHARS);

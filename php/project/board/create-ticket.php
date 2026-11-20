@@ -2,6 +2,11 @@
 session_start();
 require_once('../requestBDD.php');
 
+if(!isset($_SESSION['id']) || $_SESSION['role'] !== 'usager'){
+    header('Location: /index.php');
+    exit;
+}
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $id = $_SESSION['id'];
     $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -10,6 +15,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $date = (new DateTime('now', new DateTimeZone('Europe/Paris')))->format('Y-m-d H:i:s');
     $create = executerRequete('creer-ticket', ['compte' => $id, 'titre' => $titre,'description' => $description, 'statut' => 'NOUVEAU', 'date_creation' => $date]);
 
+    header('Location: dashboard_usager.php');
+    exit;
 }
 
 $titre = 'Creation Tickets';
