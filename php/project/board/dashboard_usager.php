@@ -21,7 +21,7 @@ require_once '../partiel/header.php';
     <h2>Historique des tickets</h2>
     <ul>
         <?php foreach ($hist as $ticket): ?>
-            <li><?php echo $ticket['titre']; ?> | <?php echo $ticket['statut'] ?> | <?php echo $ticket['date_creation']; ?></li>
+            <li><?php echo $ticket['titre']; ?> | <?php echo $ticket['statut'] ?> | <?php echo $ticket['date_creation']; ?> | <a href="/board/voir_ticket_usager.php?id=<?php echo $ticket['id']; ?>">Voir</a></li>
         <?php endforeach; ?>
     </ul>
 <?php endif; ?>
