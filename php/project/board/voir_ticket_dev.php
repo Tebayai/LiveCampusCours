@@ -3,6 +3,8 @@ session_start();
 require_once('../requestBDD.php');
 
 $voirTicket = executerRequete('voir-ticket-par-id', ['ticket' => $_GET['id']]);
+$voirReponses = executerRequete('voir-responses-par-ticket', ['ticket' => $_GET['id']]);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'RESOLU']);
     header('Location: voir_ticket_dev.php?id=' . $_GET['id']);
