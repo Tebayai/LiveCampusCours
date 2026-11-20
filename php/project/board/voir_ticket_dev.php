@@ -3,7 +3,11 @@ session_start();
 require_once('../requestBDD.php');
 
 $voirTicket = executerRequete('voir-ticket-par-id', ['ticket' => $_GET['id']]);
-$statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'RESOLU']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $statusResolve = executerRequete('modifier-statut-ticket', ['ticket' => $_GET['id'], 'statut' => 'RESOLU']);
+    header('Location: voir_ticket_dev.php?id=' . $_GET['id']);
+    exit;
+}
 
 
 $titre = 'Creation Tickets';
@@ -34,9 +38,11 @@ require_once '../partiel/header.php';
 
 <h3>Historique des messages échangés</h3>
 
-<?php if($voirTicket['statut'] == 'NOUVEAU' || $voirTicket['statut'] == 'NON RESOLU'):?>
+<?php if($voirTicket['statut'] == 'NOUVEAU' || $voirTicket['statut'] == 'NONRESOLU'):?>
     <h3>Changer status ticket</h3>
-    <button type="submit">RESOLU</button>
+    <form method="post" action="">
+        <button type="submit">RESOLU</button>
+    </form>
 <?php endif; ?>
 
 
