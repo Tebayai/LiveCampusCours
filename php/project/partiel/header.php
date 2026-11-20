@@ -14,7 +14,7 @@
     <a href="/index.php">Accueil</a>
 
     <?php if(isset($_SESSION['identifiant'])): ?>
-        <span>Bonjour, <?= $_SESSION['identifiant'] ?></span>
+        <span><?= $_SESSION['identifiant'] ?></span>
         <a href="/deconnexion.php">Déconnexion</a>
     <?php endif; ?>
 </nav>
