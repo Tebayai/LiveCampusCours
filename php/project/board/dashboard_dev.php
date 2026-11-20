@@ -24,6 +24,7 @@ require_once '../partiel/header.php';
             <tr>
                 <td><?php echo $ticket['titre']; ?></td>
                 <td><?php echo $ticket['statut']; ?></td>
+                <td><a href="/board/voir_ticket_dev.php?id=<?php echo $ticket['id']; ?>">Voir</a></td>
             </tr>
         <?php endforeach; ?>
     </table>
