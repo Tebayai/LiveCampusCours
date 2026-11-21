@@ -177,3 +177,10 @@ table{
         }
     }
 }
+
+footer{
+    background-color: rgb(6, 65, 92);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
